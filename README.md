@@ -23,7 +23,7 @@ For any Spotify users or just people who want to share their feeling on music, S
 ## Team Members
 
 - Daniel Sun: [github](https://github.com/DanielS511)
-- Laura Lou:
+- Laura Lou: [github](https://github.com/wentinglou)
 - Paige Yoo:
 - Austin B Lee:
 - Sylvia Chen:
