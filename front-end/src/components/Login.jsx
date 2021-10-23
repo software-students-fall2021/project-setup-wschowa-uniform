@@ -1,9 +1,10 @@
-import { Button } from "react-bootstrap"
+import { Button, Image } from "react-bootstrap"
 import "./Login.css"
+import logo from "../image/logo.jpg"
 function Login() {
   return (
     <div className="login">
-      <h1>Log in</h1>
+      <Image className="login_logo" src={logo} alt="Logo" roundedCircle />
       <div className="login_body">
         <div>
           <input

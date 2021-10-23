@@ -1,9 +1,16 @@
 .login {
+  display: flex;
+  flex-direction: column;
   margin: auto;
   width: 90%;
   padding: 10%;
   text-align: center;
   padding: auto;
+}
+.login_logo {
+  width: 200px;
+  height: 200px;
+  margin: auto;
 }
 .login_body {
   margin: auto;
@@ -12,7 +19,6 @@
   margin: 6%;
 }
 .login_input {
-  display: block;
   margin: auto;
   margin-top: 6%;
   margin-bottom: 6%;
