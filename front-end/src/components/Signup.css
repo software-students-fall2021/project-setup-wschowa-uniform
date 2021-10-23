@@ -1,0 +1,13 @@
+.signup_body {
+  margin: 6% auto 6% auto;
+  text-align: center;
+  display: block;
+}
+.signup_image {
+  margin: 6% auto 6% auto;
+}
+.signup_input {
+  margin: 6% auto 6% auto;
+  display: block;
+  width: 300px;
+}
