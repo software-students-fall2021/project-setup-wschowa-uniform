@@ -3,11 +3,10 @@ import { Image, Button } from "react-bootstrap"
 function Signup() {
   return (
     <div className="signup_body">
-      <h1>Sign up</h1>
       <Image
         className="signup_image"
         src="https://picsum.photos/100/150"
-        alt="profile image"
+        alt="profile picture"
         roundedCircle
       />
       <div>
@@ -26,16 +25,15 @@ function Signup() {
           type="password"
           placeholder="Re-enter password"
         ></input>
-        <p>Birthday</p>
         <input
           className="signup_input"
-          type="date"
-          placeholder="Birthday"
+          type="text"
+          placeholder="Birthday: MM/DD/YYYY"
         ></input>
         <input
           className="signup_input"
           type="text"
-          placeholder="Gender"
+          placeholder="Gender H/F"
         ></input>
         <textarea
           className="signup_input"
@@ -45,7 +43,7 @@ function Signup() {
         ></textarea>
       </div>
       <Button className="login_button" variant="outline-primary" href="/">
-        Sign up
+        Done
       </Button>{" "}
     </div>
   )

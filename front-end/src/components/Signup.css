@@ -1,13 +1,19 @@
 .signup_body {
   margin: 6% auto 6% auto;
   text-align: center;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 .signup_image {
   margin: 6% auto 6% auto;
 }
 .signup_input {
   margin: 6% auto 6% auto;
-  display: block;
   width: 300px;
+  text-align: center;
+}
+.login_button {
+  width: 100px;
+  margin: auto;
 }
