@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 
 import Login from "./components/Login"
 import Signup from "./components/Signup"
+import NewPost from "./component/NewPost"
+
 function App() {
   return (
     <Router>
@@ -15,6 +17,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/newpost">
+            <NewPost />
           </Route>
         </Switch>
       </Container>
