@@ -1,0 +1,26 @@
+.newPost{
+    width: 90%;
+    text-align: center;
+    padding: 20px;
+    margin: 30px;
+    line-height: 80px;
+}
+.nameInput{
+    height: 60px;
+}
+
+.captionInput{
+    height: 90px;
+}
+
+h1{
+    text-align: center;
+}
+
+.spotifyPlaylist{
+    height: 100px;
+    text-align: center;
+    position: relative;
+    border: 1px;
+
+}
