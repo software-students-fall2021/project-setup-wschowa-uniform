@@ -1,0 +1,26 @@
+.App-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #282c34;
+    color: white;
+    height: 80px;
+}
+
+.App-title {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: greenyellow;
+}
+
+.dropdown-button {
+    text-align: right;
+    height: 80px;
+    width: 80px;
+}
+
+.menu-icon {
+    font-size: 60px;
+}
