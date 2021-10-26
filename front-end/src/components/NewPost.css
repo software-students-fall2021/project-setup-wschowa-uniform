@@ -1,32 +1,33 @@
-.newPost{
-    width: 90%;
-    text-align: center;
-    padding: 20px;
-    margin: 30px;
-    line-height: 80px;
+.parent {
+	margin: 50px auto auto auto;
 }
-.nameInput{
-    height: 60px;
+.newPost {
+	width: 90%;
+	text-align: center;
+	padding: 20px;
+	margin: 30px;
+	line-height: 80px;
 }
-
-.captionInput{
-    height: 90px;
-}
-
-h1{
-    text-align: center;
+.nameInput {
+	height: 60px;
 }
 
-.spotifyPlaylist{
-    height: 100px;
-    text-align: center;
-    position: relative;
-    border: 1px;
-
+.captionInput {
+	height: 90px;
 }
 
-.share{
-    position:absolute;
-    right:530px;
-    top:100px;    
+h1 {
+	text-align: center;
+}
+
+.spotifyPlaylist {
+	height: 100px;
+	text-align: center;
+	position: relative;
+	border: 1px;
+}
+
+.share {
+	position: absolute;
+	margin: 10px auto auto 314px;
 }
