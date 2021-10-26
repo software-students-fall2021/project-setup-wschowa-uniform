@@ -40,7 +40,7 @@ function DetailedPost() {
                 <Card.Grid className="detailed-post-comments" hoverable={false}>
                     <Comment
                         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo"/>}
-                        content={<Form className="detailed-post-leave-comment">
+                        content={<Form className="detailed-post-leave-comment" onFinish={onFinish}>
                             <Form.Item>
                                 <Input
                                     placeholder="Leave your comment..."
