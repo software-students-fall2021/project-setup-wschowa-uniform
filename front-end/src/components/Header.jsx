@@ -1,5 +1,5 @@
 import React from 'react';
-import { MailOutlined, AppstoreOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined } from '@ant-design/icons';
 import { Menu, Dropdown, Button } from 'antd';
 import "./Header.css"
 
