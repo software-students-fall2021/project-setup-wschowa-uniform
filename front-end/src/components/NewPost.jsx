@@ -11,6 +11,9 @@ const NewPost = (props) => {
                     <div className = "spotifyPlaylist">spotify showcase will go here</div>
                     <div><input name="caption" className = "captionInput" type="text" placeholder="Write a Caption ..."/></div>
                 </div>
+                <div className="share">
+                    <input name = "share" type="submit" value="share"></input>
+                </div>
             </div>
         )
 }
