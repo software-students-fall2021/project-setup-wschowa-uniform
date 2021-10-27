@@ -4,7 +4,7 @@ import {Card, Avatar, Comment, Button, Form, Input} from 'antd';
 import {HeartOutlined, CommentOutlined, SendOutlined} from '@ant-design/icons';
 import "./DetailedPost.css"
 
-function DetailedPost() {
+function DetailedPost(props) {
     const onFinish = (values) => {
         console.log("the comment is:", values);
         const {newComment} = values;
@@ -41,7 +41,7 @@ function DetailedPost() {
                     <Comment
                         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo"/>}
                         content={<Form className="detailed-post-leave-comment" onFinish={onFinish}>
-                            <Form.Item>
+                            <Form.Item name="new-comment">
                                 <Input
                                     placeholder="Leave your comment..."
                                 />
