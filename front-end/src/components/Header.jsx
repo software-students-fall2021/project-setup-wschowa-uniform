@@ -17,7 +17,7 @@ function Header() {
 				</a>
 			</Menu.Item>
 			<Menu.Item>
-				<a rel="noopener noreferrer" href="">
+				<a rel="noopener noreferrer" href="/profile">
 					Profile
 				</a>
 			</Menu.Item>
