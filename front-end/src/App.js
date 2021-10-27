@@ -8,6 +8,8 @@ import Signup from "./components/Signup"
 import NewPost from "./components/NewPost"
 import DetailedPost from "./components/DetailedPost";
 import Header from "./components/Header";
+import Profile from "./components/Profile"
+import EditProfile from "./componenets/EditProfile"
 
 
 function App() {
@@ -28,6 +30,12 @@ function App() {
               </Route>
               <Route path="/seepost">
                 <DetailedPost/>
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+              <Route path="/editprofile">
+                <EditProfile />
               </Route>
             </Switch>
           </Container>
