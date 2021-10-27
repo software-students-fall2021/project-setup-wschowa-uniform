@@ -1,12 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    BrowserRouter
-  } from "react-router-dom";
+import {BrowserRouter as Link} from "react-router-dom";
 
 
 
@@ -39,10 +33,10 @@ export const EditProfile = (props) => {
             <Link to={{
                 pathname:'./Header',
                 state:{
-                name: 'name',
-                age: 'age',
-                gender: 'gender',
-                desc: 'desc',
+                    name: 'name',
+                    age: 'age',
+                    gender: 'gender',
+                    desc: 'desc',
                 }}}>
                 <button>Submit</button>
             </Link>
