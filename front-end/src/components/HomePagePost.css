@@ -1,0 +1,55 @@
+.post_container{
+    border-radius: 15px;
+    background-color: white;
+    height: 50vh;
+    width: 85vw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2.5vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.post_content{
+    height: 45vh;
+    width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 4vh 4vh 4vh 4vh;
+    text-align: left;
+}
+.profile_pic{
+    font-size: 3vh;
+    border: 1px solid black;
+    border-radius: 50%;
+    float: left;
+    height: 7.5vh;
+    width: 7.5vh;
+}
+.profile_pic_wrapper{
+    border:none;
+    font-size: 3vh;
+    float: left;
+    height: 7.5vh;
+    width: 7.5vh;
+    margin-right: 2vh;
+    margin-bottom: 2vh;
+}
+.playlist_title{
+    font-size: 4vh;
+    margin: 0 0 0 0;
+}
+.playlist_username{
+    font-size: 2.5vh;
+    margin: 0 0 0 0;
+}
+.playlist_embed{
+    width: 100%;
+    height: 32vh;
+    margin-top: 1.5vh;
+}
+.playlist_iframe{
+    font-size: 2.5vh;
+    width: 100%;
+    height: 32vh;
+   
+}
+
