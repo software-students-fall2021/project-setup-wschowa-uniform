@@ -1,25 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Comments from "./Comments"
 import {Card, Avatar, Comment, Button, Form, Input} from 'antd';
 import {HeartOutlined, CommentOutlined, SendOutlined} from '@ant-design/icons';
 import "./DetailedPost.css"
 
 function DetailedPost(props) {
+
     const onFinish = (values) => {
         console.log("the comment is:", values);
         const {newComment} = values;
         // temporary there is no database to record the new comment
     }
-    // get the post details from database
-    const getPost = () => {
-    }
 
     return (
         <div className="detailed-post-page">
             <Card
-                title={<h2 className="playlist-name"></h2>}
-                cover={<img className="detailed-post-album"
-                            src="https://picsum.photos/200"/>}
+                title={<h2 className="playlist-name">{props.details.name}</h2>}
+                cover={<div className="detailed-post-cover">
+                    <div className="detailed-post-music-list">
+                        <h2>Song 1: {props.details.music1}</h2>
+                        <p>by artist: </p>
+                        <br />
+                        <h2>Song 2: {props.details.music2}</h2>
+                        <p>by artist: </p>
+                    </div>
+                    <img className="detailed-post-album"
+                         src="https://picsum.photos/300/200"/>
+                </div>
+                    }
             >
 
                 <Card.Grid className="detailed-post-response" hoverable={false}>
