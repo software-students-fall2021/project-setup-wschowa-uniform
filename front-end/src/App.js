@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import NewPost from "./components/NewPost"
-import DetailedPost from "./components/DetailedPost"
 import Header from "./components/Header"
 import Profile from "./components/Profile"
 import EditProfile from "./components/EditProfile"
 import Home from "./components/Home"
+import SeePost from "./components/SeePost";
 
 function App() {
 	return (
@@ -31,9 +31,7 @@ function App() {
 						<Route path="/newpost">
 							<NewPost />
 						</Route>
-						<Route path="/seepost">
-							<DetailedPost />
-						</Route>
+						<Route path="/seepost/:parameter1" render={(props) => <SeePost {...props} />} />>
 						<Route path="/profile">
 							<Profile />
 						</Route>

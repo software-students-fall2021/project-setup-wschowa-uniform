@@ -1,6 +1,6 @@
 .detailed-post-page {
     margin : auto;
-    width : 60%;
+    width : 600px;
     overflow: auto;
 }
 
@@ -9,11 +9,18 @@
     margin : auto;
     text-align: center;
 }
+.detailed-post-cover {
+    height: 600px;
+}
+
+.detailed-post-music-list {
+    margin-left: 50px;
+    margin-top: 40px;
+}
 
 .detailed-post-album {
-    margin : auto;
-    width : 600px;
-    height : 600px;
+    width : 700px;
+    height : 400px;
 
 }
 
