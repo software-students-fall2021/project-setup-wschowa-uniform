@@ -10,6 +10,7 @@ import DetailedPost from "./components/DetailedPost"
 import Header from "./components/Header"
 import Profile from "./components/Profile"
 import EditProfile from "./components/EditProfile"
+import Home from "./components/Home"
 
 function App() {
 	return (
@@ -18,6 +19,9 @@ function App() {
 			<Router>
 				<Container fluid="md">
 					<Switch>
+						<Route path="/home">
+							<Home />
+						</Route>
 						<Route path="/login">
 							<Login />
 						</Route>
