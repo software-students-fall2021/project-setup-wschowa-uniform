@@ -10,7 +10,7 @@ import Header from "./components/Header"
 import Profile from "./components/Profile"
 import EditProfile from "./components/EditProfile"
 import Home from "./components/Home"
-import SeePost from "./components/SeePost";
+import SeePost from "./components/SeePost"
 
 function App() {
 	return (
@@ -19,7 +19,7 @@ function App() {
 			<Router>
 				<Container fluid="md">
 					<Switch>
-						<Route path="/home">
+						<Route path="/">
 							<Home />
 						</Route>
 						<Route path="/login">
@@ -31,7 +31,10 @@ function App() {
 						<Route path="/newpost">
 							<NewPost />
 						</Route>
-						<Route path="/seepost/:parameter1" render={(props) => <SeePost {...props} />} />>
+						<Route
+							path="/seepost/:parameter1"
+							render={(props) => <SeePost {...props} />}
+						/>
 						<Route path="/profile">
 							<Profile />
 						</Route>
