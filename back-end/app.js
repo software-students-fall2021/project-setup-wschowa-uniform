@@ -16,8 +16,16 @@ app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nic
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
+//import editprofile router from routers
+const editProfileRouter = require("./routers/EditProfile")
+
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
 // we will put some server logic here later...
+app.get("/", (req, res) => {
+	res.send("Hello World.")
+})
+
+app.use("/editprofile", editProfileRouter)
 // export the express app we created to make it available to other modules
 module.exports = app
