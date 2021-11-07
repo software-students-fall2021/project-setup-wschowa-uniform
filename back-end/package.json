@@ -4,7 +4,8 @@
 	"description": "The back-end of your project will live in this directory.",
 	"main": "server.js",
 	"scripts": {
-		"test": "mocha --exit"
+		"test": "mocha --exit",
+		"coverage": "nyc --reporter=text npm run test"
 	},
 	"author": "",
 	"license": "ISC",
