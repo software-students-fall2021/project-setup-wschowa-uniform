@@ -25,7 +25,7 @@ router.get("/", logger, (req, res, next) => {
 		.get(DATA_URL)
 		.then((apiresponse) => {
 			const databyid = apiresponse.data.find((element) => element.id == user_id)
-			res.json(databyid)
+			res.status(200).send(databyid)
 		})
 		.catch((err) => next(err))
 })
@@ -36,11 +36,17 @@ req: the request should be a url with the form of "/editprofile?id={user id}"
 router.post("/", logger, (req, res) => {
 	const user_id = req.query.id
 	console.log(req.body)
-	post_name = req.body.name
-	post_age = req.body.age
-	post_gender = req.body.gender
-	post_description = req.body.description
-	res.send("complete")
+	const newProfile = {
+		id: req.query.id,
+		first_name: req.body.first_name,
+		age: req.body.age,
+		gender: req.body.gender,
+		last_name: req.body.last_name,
+		description: req.body.description,
+	}
+	//We want to alter this information in the database
+	//send back the new profile
+	res.status(200).send(newProfile)
 })
 
 module.exports = router
