@@ -23,7 +23,7 @@ const editProfileRouter = require("./routers/EditProfile")
 app.use("/static", express.static("public"))
 // we will put some server logic here later...
 app.get("/", (req, res) => {
-	res.send("Hello World.")
+	res.status(200).send("Hello World.")
 })
 
 app.use("/editprofile", editProfileRouter)
