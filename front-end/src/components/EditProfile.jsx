@@ -1,5 +1,5 @@
 import React from "react"
-import Form from "react-bootstrap/Form"
+import { Form, Button } from "react-bootstrap"
 import { BrowserRouter as Link } from "react-router-dom"
 
 export const EditProfile = (props) => {
@@ -28,19 +28,9 @@ export const EditProfile = (props) => {
 					<Form.Control type="desc" placeholder="Enter Description" />
 				</Form.Group>
 
-				<Link
-					to={{
-						pathname: "./Header",
-						state: {
-							name: "name",
-							age: "age",
-							gender: "gender",
-							desc: "desc",
-						},
-					}}
-				>
-					<button>Submit</button>
-				</Link>
+				<Button variant="outline-primary" href="\profile">
+					Submit
+				</Button>
 			</Form>
 		</div>
 	)
