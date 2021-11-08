@@ -24,7 +24,7 @@ For any Spotify users or just people who want to share their feeling on music, S
 
 - Daniel Sun: [github](https://github.com/DanielS511)
 - Laura Lou: [github](https://github.com/wentinglou)
-- Paige Yoo:
+- Paige Yoo: [github](https://github.com/paige0104)
 - Austin B Lee: [github](https://github.com/ALee0615)
 - Sylvia Chen:[github](https://github.com/Sylvia-Siyu-Chen)
 
