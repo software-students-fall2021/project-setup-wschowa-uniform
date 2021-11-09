@@ -8,7 +8,6 @@ import Signup from "./components/Signup"
 import NewPost from "./components/NewPost"
 import Header from "./components/Header"
 import Profile from "./components/Profile"
-import EditProfile from "./components/EditProfile"
 import Home from "./components/Home"
 import SeePost from "./components/SeePost"
 
@@ -37,9 +36,6 @@ function App() {
 						/>
 						<Route path="/profile">
 							<Profile />
-						</Route>
-						<Route path="/editprofile">
-							<EditProfile />
 						</Route>
 					</Switch>
 				</Container>

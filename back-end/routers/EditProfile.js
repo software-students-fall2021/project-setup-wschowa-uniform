@@ -12,7 +12,7 @@ function logger(req, res, next) {
 }
 /*
 The get method of the api
-req: the request should be a url with the form of "/editprofile?id={user id}"
+req: the request should be a url with the form of "/profile?id={user id}"
 res: the response contains a json object of a user with {user id}
 */
 router.get("/", logger, (req, res, next) => {
@@ -31,7 +31,7 @@ router.get("/", logger, (req, res, next) => {
 })
 /*
 Post method the change user profile with the {user id}
-req: the request should be a url with the form of "/editprofile?id={user id}"
+req: the request should be a url with the form of "/profile?id={user id}"
 */
 router.post("/", logger, (req, res) => {
 	const user_id = req.query.id

@@ -10,11 +10,11 @@ chai.should()
 chai.use(chaiHttp)
 
 // unit testing on the GET /editprofile?id={user id} route
-describe("unit testing on the GET /editprofile?id={user id} route", function () {
+describe("unit testing on the GET /profile?id={user id} route", function () {
 	it("should return OK status", function () {
 		const user_id = 1
 		return request(app)
-			.get("/editprofile?id=" + user_id)
+			.get("/profile?id=" + user_id)
 			.then(function (res) {
 				assert.equal(res.status, 200)
 			})
@@ -22,7 +22,7 @@ describe("unit testing on the GET /editprofile?id={user id} route", function () 
 	it("should return a json object that contains the information of {user id} user", function () {
 		const user_id = 1
 		return request(app)
-			.get("/editprofile?id=" + user_id)
+			.get("/profile?id=" + user_id)
 			.then(function (res) {
 				//the res.body should be a json object
 				res.body.should.be.a("Object")
@@ -50,7 +50,7 @@ describe("unit testing on the POST /editprofile?id={user id} route", function ()
 	it("should return OK status", function () {
 		const user_id = 1
 		return request(app)
-			.post("/editprofile?id=" + user_id)
+			.post("/profile?id=" + user_id)
 			.send(profile)
 			.then(function (res) {
 				assert.equal(res.status, 200)
@@ -59,7 +59,7 @@ describe("unit testing on the POST /editprofile?id={user id} route", function ()
 	it("should return a json object that contains the new information of {user id} user", function () {
 		const user_id = 1
 		return request(app)
-			.post("/editprofile?id=" + user_id)
+			.post("/profile?id=" + user_id)
 			.send(profile)
 			.then(function (res) {
 				//the res.body should be a json object

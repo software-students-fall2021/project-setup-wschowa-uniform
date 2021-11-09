@@ -17,7 +17,6 @@ app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 //import editprofile router from routers
-const editProfileRouter = require("./routers/EditProfile")
 const homePageRouter = require("./routers/HomePage")
 
 // make 'public' directory publicly readable with static content
