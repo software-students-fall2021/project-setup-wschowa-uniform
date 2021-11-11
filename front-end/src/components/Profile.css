@@ -6,7 +6,10 @@
 .post {
 	flex: 1;
 }
+#previous_post_header {
+	margin-top: 20px;
+}
 
-.hidden{
+.hidden {
 	display: none;
 }
