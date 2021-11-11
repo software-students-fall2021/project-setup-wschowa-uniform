@@ -74,3 +74,15 @@ describe("unit testing on the POST /editprofile?id={user id} route", function ()
 			})
 	})
 })
+
+// unit testing on the GET /editprofile/posts?id={user id} route
+describe("unit testing on the GET /profile/posts?id={user id} route", function () {
+	it("should return OK status", function () {
+		const user_id = 1
+		return request(app)
+			.get("/profile?id=" + user_id)
+			.then(function (res) {
+				assert.equal(res.status, 200)
+			})
+	})
+})

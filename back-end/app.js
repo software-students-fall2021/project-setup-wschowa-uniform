@@ -11,13 +11,23 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
 
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
-
+//to allow front-end access data
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+	)
+	res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+	next()
+})
 // use express's builtin body-parser middleware to parse any data included in a request
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 //import editprofile router from routers
-const homePageRouter = require("./routers/HomePage")
+// const homePageRouter = require("./routers/HomePage")
+const profileRouter = require("./routers/Profile")
 
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
@@ -26,7 +36,7 @@ app.get("/", (req, res) => {
 	res.status(200).send("Hello World.")
 })
 
-app.use("/editprofile", editProfileRouter)
-app.use("/homepage", homePageRouter)
+app.use("/profile", profileRouter)
+// app.use("/homepage", homePageRouter)
 // export the express app we created to make it available to other modules
 module.exports = app
