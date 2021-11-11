@@ -11,7 +11,16 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
 
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
-
+//to allow front-end access data
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+	)
+	res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+	next()
+})
 // use express's builtin body-parser middleware to parse any data included in a request
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
