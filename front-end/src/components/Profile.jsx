@@ -34,18 +34,26 @@ const Profile = () => {
 		buttonName()
 	}
 
+	const userId = 1 //this should be get from database, now just hard coded
 	const [firstname, setFirstName] = React.useState("First Name Here")
 	const [lastname, setLastName] = React.useState("Last Name Here")
 	const [age, setAge] = React.useState("Age Here")
 	const [gender, setGender] = React.useState("Gender Here")
 	const [desc, setDesc] = React.useState("Description Here")
-
+	//fetch the data from backend
 	useEffect(() => {
 		async function fetchData() {
-			const result = await axios(
-				"https://my.api.mockaroo.com/post.json?key=99391580"
-			)
+			//fetch the past posts data
+			const result = await axios("/profile/posts?id=" + userId)
 			setData(result.data)
+			//fectch the user information data
+			const userInfo = await axios("/profile?id=" + userId)
+			console.log(userInfo.data.age)
+			setFirstName(userInfo.data.first_name)
+			setAge(userInfo.data.age)
+			setLastName(userInfo.data.last_name)
+			setGender(userInfo.data.last_name)
+			setDesc(userInfo.data.description)
 		}
 		fetchData()
 	}, [])
