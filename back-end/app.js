@@ -17,7 +17,8 @@ app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 //import editprofile router from routers
-const homePageRouter = require("./routers/HomePage")
+// const homePageRouter = require("./routers/HomePage")
+const profileRouter = require("./routers/Profile")
 
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 	res.status(200).send("Hello World.")
 })
 
-app.use("/editprofile", editProfileRouter)
-app.use("/homepage", homePageRouter)
+app.use("/profile", profileRouter)
+// app.use("/homepage", homePageRouter)
 // export the express app we created to make it available to other modules
 module.exports = app
