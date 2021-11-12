@@ -1,5 +1,4 @@
 import React from "react"
-import { Button, Descriptions } from "antd"
 import { BrowserRouter as Link, Routes, Route } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
@@ -48,14 +47,29 @@ const Profile = () => {
 			setData(result.data)
 			//fectch the user information data
 			const userInfo = await axios("/profile?id=" + userId)
-			console.log(userInfo.data.age)
 			setFirstName(userInfo.data.first_name)
 			setAge(userInfo.data.age)
 			setLastName(userInfo.data.last_name)
 			setGender(userInfo.data.last_name)
-			setDesc(userInfo.data.description)
+			setDesc(userInfo.data.description)	
+		}
+		async function postData(){
+			axios.post('/profile',{
+				first_name: req.body.first_name,
+				age: req.body.age,
+				gender: req.body.gender,
+				last_name: req.body.last_name,
+				description: req.body.description
+			})
+			.then(function (response){
+				console.log(response)
+			})
+			.catch(function (error){
+				console.log(error)
+			})
 		}
 		fetchData()
+		postData()
 	}, [])
 
 	return (
