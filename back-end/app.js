@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 //import editprofile router from routers
 // const homePageRouter = require("./routers/HomePage")
 const profileRouter = require("./routers/Profile")
+const postRouter = require("./routers/DetailedPost")
 
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
@@ -39,4 +40,6 @@ app.get("/", (req, res) => {
 app.use("/profile", profileRouter)
 // app.use("/homepage", homePageRouter)
 // export the express app we created to make it available to other modules
+
+app.use("/seepost", postRouter)
 module.exports = app
