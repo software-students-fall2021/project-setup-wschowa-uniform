@@ -5,6 +5,7 @@ const NewPost = (props) => {
 	return (
 		<div className="parent">
 			<h1>Spotify Music Sharing</h1>
+			<form action="/upload" method="POST" encType="multipart/form-data">
 			<div className="newPost">
 				<div>
 					<input
@@ -35,6 +36,7 @@ const NewPost = (props) => {
 			<div className="share">
 				<input name="share" type="submit" value="share"></input>
 			</div>
+			</form>
 		</div>
 	)
 }
