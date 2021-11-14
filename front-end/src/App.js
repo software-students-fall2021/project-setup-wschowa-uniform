@@ -27,7 +27,7 @@ function App() {
 						<Route path="/signup">
 							<Signup />
 						</Route>
-						<Route path="/newpost">
+						<Route path="/newpost" >
 							<NewPost />
 						</Route>
 						<Route

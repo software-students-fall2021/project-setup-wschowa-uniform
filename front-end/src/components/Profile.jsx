@@ -55,11 +55,11 @@ const Profile = () => {
 		}
 		async function postData(){
 			axios.post('/profile',{
-				first_name: req.body.first_name,
-				age: req.body.age,
-				gender: req.body.gender,
-				last_name: req.body.last_name,
-				description: req.body.description
+				first_name: data.first_name, 
+				age: data.age,
+				gender: data.gender,
+				last_name: data.last_name,
+				description: data.description
 			})
 			.then(function (response){
 				console.log(response)
