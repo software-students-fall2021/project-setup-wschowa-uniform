@@ -6,25 +6,7 @@ const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
 const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
 
 
-// }
-// /*
-// A middleware that console out the request original url
-// */
-// function logger(req, res, next) {
-// 	console.log(req.originalUrl)
-// 	next()
-// }
-
-
-// router.get('/newpost',(req,res)=>{
-//     res.sendFile(path.join(__dirname,'/../front-end/src/components/NewPost.jsx'))
-// })
-function logger(req, res, next) {
-    console.log(req.originalUrl)
-    next()
-}
-
-router.get("/", logger, (req, res, next) => {
+router.get("/", (req, res, next) => {
     const ID = req.query.id
     axios
         .get(DATA_URL)
