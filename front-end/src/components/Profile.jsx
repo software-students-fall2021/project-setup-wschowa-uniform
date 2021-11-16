@@ -50,23 +50,24 @@ const Profile = () => {
 			setFirstName(userInfo.data.first_name)
 			setAge(userInfo.data.age)
 			setLastName(userInfo.data.last_name)
-			setGender(userInfo.data.last_name)
-			setDesc(userInfo.data.description)	
+			setGender(userInfo.data.gender)
+			setDesc(userInfo.data.description)
 		}
-		async function postData(){
-			axios.post('/profile',{
-				first_name: data.first_name, 
-				age: data.age,
-				gender: data.gender,
-				last_name: data.last_name,
-				description: data.description
-			})
-			.then(function (response){
-				console.log(response)
-			})
-			.catch(function (error){
-				console.log(error)
-			})
+		async function postData() {
+			axios
+				.post("/profile", {
+					first_name: data.first_name,
+					age: data.age,
+					gender: data.gender,
+					last_name: data.last_name,
+					description: data.description,
+				})
+				.then(function (response) {
+					console.log(response)
+				})
+				.catch(function (error) {
+					console.log(error)
+				})
 		}
 		fetchData()
 		postData()
@@ -80,7 +81,7 @@ const Profile = () => {
 					<img src="https://picsum.photos/200" />
 				</div>
 				<p>
-					Name: {firstname} + '' + {lastname}
+					Name: {firstname} {lastname}
 				</p>
 				<p>Age: {age}</p>
 				<p>Gender: {gender}</p>
