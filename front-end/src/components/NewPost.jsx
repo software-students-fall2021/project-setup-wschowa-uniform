@@ -5,9 +5,9 @@ import axios from "axios"
 
 const NewPost = ({onAdd}) => {
 
-const [playlistName, setPlaylistName] = React.useState('')
-const [playlistLink, setPlaylistLink] = React.useState('')
-const [playlistCaption, setPlaylistCaption] = React.useState('')
+const [playlistName, setPlaylistName] = useState('')
+const [playlistLink, setPlaylistLink] = useState('')
+const [playlistCaption, setPlaylistCaption] = useState('')
 
 const onClick = (event) =>{
 	console.log(event);
@@ -33,23 +33,6 @@ const onSubmit = (e)=>{
 	setPlaylistLink('')
 	setPlaylistCaption('') 
 }
-
-// const addPost = async (newPost) =>{
-//TODO: add db later to fetch data
-// 	const res = await fetch('',{ 
-// 		method = 'POST',
-// 		headers : {
-// 			'Content-Type' : 'application/json'
-// 		},
-// 		body : JSON.stringify(newPost)
-// 	})
-
-// 	const data = res.json()
-
-// 	setPlaylistName([...playlistName, data])
-
-// 	// setPlaylistName([...playlistName,newName])
-// }
 
 
 	return (
@@ -96,7 +79,7 @@ const onSubmit = (e)=>{
 					/>
 				</div>
 				<div id="share">
-				<input type="submit" onClick={onClick} value = "Save Post and Share" />
+				<input type="submit" value = "Save Post and Share" />
 			</div>
 			</div>
 			</form>
