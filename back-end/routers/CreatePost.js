@@ -22,7 +22,7 @@ router.post('/',(req,res)=>{
     const postId = req.query.id;
     const playlistName = req.body.playlistName;
     const playlistLink = req.body.playlistLink;
-    const playlistCaption = req.body.caption;
+    const playlistCaption = req.body.playlistCaption;
     const newPost = {
         postID : postId,
         playlistName : playlistName,
