@@ -4,21 +4,10 @@ import axios from "axios"
 
 
 const NewPost = ({onAdd}) => {
-	const [edit, showEdit] = React.useState(false)
-	const [buttom, editBottom] = React.useState("Edit Post")
 
-	const share =()=>{
-		if(!edit){
-			editBottom("Post Edited!")
-		}
-		else{
-			editBottom("Edit Post")
-		}
-	}
-
-const [playlistName, setPlaylistName] = React.useState('')
-const [playlistLink, setPlaylistLink] = React.useState('')
-const [playlistCaption, setPlaylistCaption] = React.useState('')
+const [playlistName, setPlaylistName] = useState('')
+const [playlistLink, setPlaylistLink] = useState('')
+const [playlistCaption, setPlaylistCaption] = useState('')
 
 const onClick = (event) =>{
 	console.log(event);
@@ -42,11 +31,7 @@ const onSubmit = (e)=>{
 
 	setPlaylistName('')
 	setPlaylistLink('')
-	setPlaylistCaption('')
-}
-
-const addName = (newName) =>{
-	setPlaylistName([...playlistName,newName])
+	setPlaylistCaption('') 
 }
 
 
@@ -56,7 +41,9 @@ const addName = (newName) =>{
 			<h1>Spotify Music Sharing</h1>
 			<form action="/upload" method="POST" encType="multipart/form-data">
 			<div className="newPost" onSubmit={onSubmit} >
+			<div>You have logged in as: User Name</div>
 				<div>
+					Playlist Name:  
 					<input
 						name="playlistName"
 						className="nameInput"
@@ -68,6 +55,7 @@ const addName = (newName) =>{
 					/>
 				</div>
 				<div>
+					Playlist Link: 
 					<input
 						name="playlistLink"
 						className="linkInput"
@@ -79,6 +67,7 @@ const addName = (newName) =>{
 					/>
 				</div>
 				<div>
+					Caption: 
 					<input
 						name="caption"
 						className="captionInput"
@@ -89,9 +78,9 @@ const addName = (newName) =>{
 						}}
 					/>
 				</div>
+				<div id="share">
+				<input type="submit" value = "Save Post and Share" />
 			</div>
-			<div className="share">
-				<input type="submit" onClick={onClick} value = "Save Post and Share" />
 			</div>
 			</form>
 		</div>

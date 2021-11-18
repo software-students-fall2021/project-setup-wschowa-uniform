@@ -44,6 +44,6 @@ app.use("/profile", profileRouter)
 
 app.use("/seepost", postRouter)
 
-app.use("/newpost",newpostRouter)
+app.use("/newpost", newpostRouter)
 
 module.exports = app

@@ -12,6 +12,11 @@ import Home from "./components/Home"
 import SeePost from "./components/SeePost"
 
 function App() {
+
+	const addNewPost=({})=>{
+
+	}
+
 	return (
 		<div>
 			<Header />
@@ -28,7 +33,7 @@ function App() {
 							<Signup />
 						</Route>
 						<Route path="/newpost" >
-							<NewPost />
+							<NewPost onAdd = {addNewPost}/>
 						</Route>
 						<Route
 							path="/seepost/:parameter1"
