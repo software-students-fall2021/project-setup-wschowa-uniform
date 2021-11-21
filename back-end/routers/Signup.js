@@ -16,10 +16,11 @@ router.post("/", async (req, res) => {
 			password: hashPassword,
 			gender: req.body.gender,
 			birthday: req.body.birthday,
+			description: req.body.description,
 		}
 		console.log(user)
 		// we will try to update a new user in database here
-		res.send("complete")
+		res.status(200).send(user)
 	} catch {
 		res.send("failure")
 	}
