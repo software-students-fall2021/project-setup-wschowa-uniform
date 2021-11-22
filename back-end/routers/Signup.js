@@ -5,7 +5,11 @@ const bcrypt = require("bcrypt")
 router.get("/", (req, res) => {
 	res.status(200).send("complete")
 })
-
+/*
+POST for /signup
+req: a json object contain {username, password, gender, birthday, description}
+res: the user json object with encrypted password
+*/
 router.post("/", async (req, res) => {
 	try {
 		// encrypt the password
