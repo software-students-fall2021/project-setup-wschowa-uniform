@@ -3,7 +3,7 @@ const express = require("express")
 const router = express.Router()
 const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
 const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
-
+const User = require('../db')
 /*
 A middleware that console out the request original url
 */
@@ -65,9 +65,15 @@ router.post("/", logger, (req, res) => {
 		last_name: req.body.last_name,
 		description: req.body.description,
 	}
+	const new_user = new User(newProfile)
+	new_user.save((err,user)=>{
+		if(err) console.error(`there has been error saving profile: ${err}`)
+		else{
+			res.status(200).send(user)
+		}
+	})
 	//We want to alter this information in the database
 	//send back the new profile
-	res.status(200).send(newProfile)
 })
 
 module.exports = router

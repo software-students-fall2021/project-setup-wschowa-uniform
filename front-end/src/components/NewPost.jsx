@@ -9,6 +9,10 @@ const [playlistName, setPlaylistName] = useState('')
 const [playlistLink, setPlaylistLink] = useState('')
 const [playlistCaption, setPlaylistCaption] = useState('')
 
+const addNewPost = (obj) =>{
+	//TODO
+}
+
 const onClick = (event) =>{
 	console.log(event);
 }
@@ -25,7 +29,7 @@ const onSubmit = (e)=>{
 		return
 	}
 
-	onAdd({
+	addNewPost({
 		playlistName, playlistLink, playlistCaption
 	})
 
