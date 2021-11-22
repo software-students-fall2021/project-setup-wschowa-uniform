@@ -7,7 +7,7 @@ function Signup() {
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const [repeatPassword, setRepeatPassword] = useState("")
-	const [birthday, setBirthday] = useState("")
+	// const [birthday, setBirthday] = useState("")
 	const [gender, setGender] = useState("")
 	const [description, setDescription] = useState("")
 	const [alert, setAlert] = useState("")
@@ -19,7 +19,7 @@ function Signup() {
 			username === "" ||
 			password === "" ||
 			repeatPassword === "" ||
-			birthday === "" ||
+			// birthday === "" ||
 			gender === "" ||
 			description === ""
 		) {
@@ -37,7 +37,7 @@ function Signup() {
 				.post("/signup", {
 					username: username,
 					password: password,
-					birthday: birthday,
+					// birthday: birthday,
 					gender: gender,
 					description: description,
 				})
@@ -87,13 +87,13 @@ function Signup() {
 					onChange={(e) => setRepeatPassword(e.target.value)}
 					placeholder="Re-enter password"
 				></input>
-				<input
+				{/* <input
 					className="signup_input"
 					name="birthday"
 					type="text"
 					onChange={(e) => setBirthday(e.target.value)}
 					placeholder="Birthday: MM/DD/YYYY"
-				></input>
+				></input> */}
 				<input
 					className="signup_input"
 					type="text"
