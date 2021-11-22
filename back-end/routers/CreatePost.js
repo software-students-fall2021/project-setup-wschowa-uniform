@@ -4,7 +4,7 @@ const router = express.Router()
 const multer = require('multer')
 const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
 const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
-
+require('../db')
 
 router.get("/", (req, res, next) => {
     const ID = req.query.id
@@ -29,7 +29,16 @@ router.post('/',(req,res)=>{
         playlistLink : playlistLink,
         playlistCaption : playlistCaption
     }
-    res.status(200).send(newPost)
+    const new_post = new Post(newPost)
+    new_post.save((err,post)=>{
+        if(err){
+            console.error(`there has been a error saving post: ${err}`)
+        }
+        else{
+        console.log('new post has posted!')
+        res.status(200).send(post)
+        }
+    })
 })
 
 module.exports = router

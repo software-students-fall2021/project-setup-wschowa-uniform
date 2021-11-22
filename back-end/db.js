@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import URLSlugs from 'mongoose-url-slugs';
 
+
 // is the environment variable, NODE_ENV, set to PRODUCTION
 let dbconf;
 if (process.env.NODE_ENV === 'PRODUCTION') {
@@ -48,9 +49,6 @@ const Post = new Schema({
   caption: {type: String, required: true},
   comments : [Comment]
 })
-
-
-
 
 
 mongoose.model('User',User);
