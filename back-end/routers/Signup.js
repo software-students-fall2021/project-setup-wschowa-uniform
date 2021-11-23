@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
 		)
 		res.status(200).send("good")
 	} catch {
-		res.status(500).send("failure")
+		res.status(501).send("failure")
 	}
 })
 

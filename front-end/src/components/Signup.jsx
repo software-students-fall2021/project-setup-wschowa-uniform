@@ -1,9 +1,11 @@
 import "./Signup.css"
 import { Image, Alert } from "react-bootstrap"
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 import axios from "axios"
 
-function Signup() {
+function Signup(props) {
+	let history = useHistory()
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const [repeatPassword, setRepeatPassword] = useState("")
@@ -43,6 +45,7 @@ function Signup() {
 				})
 				.then(function (response) {
 					console.log(response)
+					history.push("login")
 				})
 				.catch(function (error) {
 					console.log(error)
@@ -99,7 +102,7 @@ function Signup() {
 					type="text"
 					name="gender"
 					onChange={(e) => setGender(e.target.value)}
-					placeholder="Gender H/F"
+					placeholder="Gender Male/Female"
 				></input>
 				<textarea
 					className="signup_input"
