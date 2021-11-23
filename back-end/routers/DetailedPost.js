@@ -22,5 +22,15 @@ router.get("/", logger, (req, res, next) => {
         .catch((err) => next(err))
 })
 
-
+router.post("/", logger, (req, res) => {
+    const post_id = req.query.id
+    const newComment = {
+        id: post_id,
+        comment: req.body.comment,
+        username: req.body.username,
+        isReply: req.body.isReply,
+        //date: Date.now()
+    }
+    res.status(200).send(newComment);
+})
 module.exports = router
