@@ -102,7 +102,7 @@ function Signup(props) {
 					type="text"
 					name="gender"
 					onChange={(e) => setGender(e.target.value)}
-					placeholder="Gender Male/Female"
+					placeholder="Gender male/female"
 				></input>
 				<textarea
 					className="signup_input"
