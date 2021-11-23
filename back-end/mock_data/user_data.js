@@ -2,13 +2,13 @@
 const users = [
 	{
 		id: 1,
-		username: "foo",
-		password: "bar", // you would normally encrypt the password using bcrypt() rather than keep it as plain text in the database
+		username: "daniel",
+		password: "2021", // you would normally encrypt the password using bcrypt() rather than keep it as plain text in the database
 	},
 	{
 		id: 2,
-		username: "baz",
-		password: "bum", // you would normally encrypt the password using bcrypt() rather than keep it as plain text in the database
+		username: "jack",
+		password: "2021", // you would normally encrypt the password using bcrypt() rather than keep it as plain text in the database
 	},
 ]
 
