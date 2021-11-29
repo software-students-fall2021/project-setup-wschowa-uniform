@@ -17,6 +17,7 @@ function Login() {
 		if (response.success && response.token) {
 			console.log(`User successfully logged in: ${response.username}`)
 			localStorage.setItem("token", response.token) // store the token into localStorage
+			localStorage.setItem("username", response.username) //store the username into localStorage
 			history.push("/")
 		}
 	}, [response])
@@ -37,7 +38,7 @@ function Login() {
 			console.log(`Server response: ${JSON.stringify(response.data, null, 0)}`)
 			setShowAlert(false)
 			setResponse(response.data)
-			history.push("login")
+			// history.push("/login")
 		} catch (err) {
 			// request failed... user entered invalid credentials
 			setShowAlert(true)

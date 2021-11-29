@@ -3,17 +3,12 @@ const router = express.Router()
 const cors = require("cors") // middleware for enabling CORS (Cross-Origin Resource Sharing) requests.
 const morgan = require("morgan") // middleware for nice logging of incoming HTTP requests
 require("dotenv").config({ silent: true }) // load environmental variables from a hidden file named .env
-const User = require("../models/User")
-const bcrypt = require("bcrypt")
-
-// the following are used for authentication with JSON Web Tokens
-// const _ = require("lodash") // the lodash module has some convenience functions for arrays that we use to sift through our mock user data
+const User = require("../models/User") //add user model to access database
+const bcrypt = require("bcrypt") //bcrypt to encode the password
 
 const jwt = require("jsonwebtoken")
 const passport = require("passport")
 router.use(passport.initialize()) // tell express to use passport middleware
-// load up some mock user data in an array... this would normally come from a database
-const users = require("../mock_data/user_data")
 // use this JWT strategy within passport for authentication handling
 const { jwtOptions, jwtStrategy } = require("../jwt-config") // import setup options for using JWT in passport
 passport.use(jwtStrategy)
@@ -21,14 +16,10 @@ passport.use(jwtStrategy)
 // set up some useful middleware
 router.use(
 	morgan("dev", { skip: (req, res) => process.env.NODE_ENV === "test" })
-) // log all incoming requests, except when in unit test mode.  morgan has a few logging default styles - dev is a nice concise color-coded style
-
+)
 // use express's builtin body-parser middleware to parse any data included in a request
 router.use(express.json()) // decode JSON-formatted incoming POST data
 router.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
-
-// the following cors setup is important when working with cookies on your local machine
-router.use(cors({ origin: process.env.FRONT_END_DOMAIN, credentials: true })) // allow incoming requests only from a "trusted" host
 
 router.get("/", (req, res) => {
 	res.status(200).send("complete")
@@ -38,7 +29,7 @@ router.post("/", async (req, res) => {
 	// brab the name and password that were submitted as POST body data
 	const username = req.body.username
 	const password = req.body.password
-	console.log(`${username}, ${password}`)
+	// console.log(`${username}, ${password}`)
 	if (!username || !password) {
 		// no username or password received in the POST body... send an error
 		res
@@ -48,7 +39,7 @@ router.post("/", async (req, res) => {
 
 	// const user = users[_.findIndex(users, { username: username })] //mock data legacy
 	const user = await User.findOne({ username: username })
-	console.log(user)
+	// console.log(user)
 
 	if (!user) {
 		// no user found with this name... send an error
@@ -59,6 +50,7 @@ router.post("/", async (req, res) => {
 		// If we have our user, we want to compare the password user entered to the one in the database
 		bcrypt.compare(req.body.password, user.password, function (err, response) {
 			if (err) {
+				// Something wrong when compare the passwords
 				res.status(401).send("error: fail to compare passwords")
 			}
 			if (response) {
@@ -66,6 +58,7 @@ router.post("/", async (req, res) => {
 				const token = jwt.sign(payload, jwtOptions.secretOrKey) // create a signed token
 				res.json({ success: true, username: user.username, token: token }) // send the token to the client to store
 			} else {
+				// The password doesn't match
 				res
 					.status(401)
 					.json({ success: false, message: "passwords did not match" })

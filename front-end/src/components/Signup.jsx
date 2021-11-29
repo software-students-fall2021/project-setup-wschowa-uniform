@@ -45,12 +45,12 @@ function Signup(props) {
 				})
 				.then(function (response) {
 					console.log(response)
-					history.push("login")
+					history.push("/login")
 				})
 				.catch(function (error) {
-					console.log(error)
+					console.log(error.response)
 					setShowAlert(true)
-					setAlert(error)
+					setAlert(error.response.data.message)
 				})
 		}
 	}
