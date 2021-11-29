@@ -12,7 +12,6 @@ import Home from "./components/Home"
 import SeePost from "./components/SeePost"
 
 function App() {
-
 	return (
 		<div>
 			<Header />
@@ -28,8 +27,8 @@ function App() {
 						<Route path="/signup">
 							<Signup />
 						</Route>
-						<Route path="/newpost" >
-							<NewPost/>
+						<Route path="/newpost">
+							<NewPost />
 						</Route>
 						<Route
 							path="/seepost/:parameter1"
