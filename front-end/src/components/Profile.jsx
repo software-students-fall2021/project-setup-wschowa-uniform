@@ -1,11 +1,43 @@
 import React from "react"
-import { BrowserRouter as Link, Routes, Route } from "react-router-dom"
+import {
+	BrowserRouter as Link,
+	Routes,
+	Route,
+	useHistory,
+} from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import Post_abstract from "./Post/Post_abstract"
 import "./Profile.css"
 
 const Profile = () => {
+	const history = useHistory()
+	// This part is for authentication, please don't alter
+	// Unauthenticated User cannot enter the profile page
+	// The username is unique and is stored in localStorage. It can be accessed by localStorage.getItem("username").
+	const jwtToken = localStorage.getItem("token") // the JWT token, if we have already received one and stored it in localStorage
+	console.log(`JWT token: ${jwtToken}`) // debugging
+
+	const [isLoggedIn, setIsLoggedIn] = useState(jwtToken && true) // if we already have a JWT token in local storage, set this to true, otherwise false
+
+	// try to load the protected data from the server when this component first renders
+	useEffect(() => {
+		// send the request to the server api, including the Authorization header with our JWT token in it
+		axios
+			.get(`/protected`, {
+				headers: { Authorization: `JWT ${jwtToken}` }, // pass the token, if any, to the server
+			})
+			.then((res) => {})
+			.catch((err) => {
+				console.log(
+					"The server rejected the request for this protected resource... we probably do not have a valid JWT token."
+				)
+				setIsLoggedIn(false) // update this state variable, so the component re-renders
+				history.push("/login")
+			})
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+	//authentication part ends
+
 	const [edit, showEdit] = React.useState(false)
 	const [butname, editButName] = React.useState("Edit Profile")
 	const [file, selectedFile] = React.useState(null)
@@ -72,7 +104,10 @@ const Profile = () => {
 		fetchData()
 		postData()
 	}, [])
-
+	const logout = () => {
+		localStorage.removeItem("token")
+		history.push("/")
+	}
 	return (
 		<section>
 			<div className="Profile">
@@ -140,6 +175,7 @@ const Profile = () => {
 					</label>
 				</form>
 			</p>
+			<button onClick={logout}>Log out</button>
 			<h2 id="previous_post_header">Previous Posts</h2>
 			<section className="posts">
 				{data.map((item) => (

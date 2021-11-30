@@ -10,9 +10,10 @@ import Header from "./components/Header"
 import Profile from "./components/Profile"
 import Home from "./components/Home"
 import SeePost from "./components/SeePost"
+import Logout from "./components/Logout"
+// import Protected from "./components/Protected"
 
 function App() {
-
 	return (
 		<div>
 			<Header />
@@ -25,11 +26,18 @@ function App() {
 						<Route path="/login">
 							<Login />
 						</Route>
+						{/* this is for testing */}
+						{/* <Route path="/protected">
+							<Protected />
+						</Route> */}
+						<Route path="/logout">
+							<Logout />
+						</Route>
 						<Route path="/signup">
 							<Signup />
 						</Route>
-						<Route path="/newpost" >
-							<NewPost/>
+						<Route path="/newpost">
+							<NewPost />
 						</Route>
 						<Route
 							path="/seepost/:parameter1"

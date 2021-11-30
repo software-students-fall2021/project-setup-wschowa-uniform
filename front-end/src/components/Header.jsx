@@ -21,11 +21,11 @@ function Header() {
 					Profile
 				</a>
 			</Menu.Item>
-			<Menu.Item>
+			{/* <Menu.Item>
 				<a rel="noopener noreferrer" href="/login">
-					Login/Sign out
+					Login
 				</a>
-			</Menu.Item>
+			</Menu.Item> */}
 		</Menu>
 	)
 	return (

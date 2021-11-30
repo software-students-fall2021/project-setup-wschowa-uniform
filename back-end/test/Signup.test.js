@@ -29,29 +29,13 @@ describe("unit testing on the POST /signup route", function () {
 		birthday: "20020511",
 		description: "aaaaaa",
 	}
-	it("should return OK status", function () {
+	it("should return Error status", function () {
 		const user_id = 1
 		return request(app)
 			.post("/signup")
 			.send(profile)
 			.then(function (res) {
-				assert.equal(res.status, 200)
-			})
-	})
-	it("should return a json object that contains the information of new user", function () {
-		const user_id = 1
-		return request(app)
-			.post("/signup")
-			.send(profile)
-			.then(function (res) {
-				//the res.body should be a json object
-				res.body.should.be.a("Object")
-				//the property of a user
-				res.body.should.have.property("username")
-				res.body.should.have.property("password")
-				res.body.should.have.property("gender")
-				res.body.should.have.property("birthday")
-				res.body.should.have.property("description")
+				assert.equal(res.status, 401)
 			})
 	})
 })
