@@ -1,6 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const cors = require("cors") // middleware for enabling CORS (Cross-Origin Resource Sharing) requests.
 const morgan = require("morgan") // middleware for nice logging of incoming HTTP requests
 require("dotenv").config({ silent: true }) // load environmental variables from a hidden file named .env
 const User = require("../models/User") //add user model to access database
@@ -37,7 +36,6 @@ router.post("/", async (req, res) => {
 			.json({ success: false, message: `no username or password supplied.` })
 	}
 
-	// const user = users[_.findIndex(users, { username: username })] //mock data legacy
 	const user = await User.findOne({ username: username })
 	// console.log(user)
 

@@ -32,7 +32,7 @@ const postRouter = require("./routers/DetailedPost")
 const newpostRouter = require("./routers/CreatePost")
 const loginRouter = require("./routers/Login")
 const signupRouter = require("./routers/Signup")
-
+const protectedRouter = require("./routers/Protected")
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
 // we will put some server logic here later...
@@ -43,6 +43,7 @@ app.use("/signup", signupRouter)
 app.use("/login", loginRouter)
 app.use("/profile", profileRouter)
 app.use("/home", homeRouter)
+app.use("/protected", protectedRouter)
 // export the express app we created to make it available to other modules
 
 app.use("/seepost", postRouter)

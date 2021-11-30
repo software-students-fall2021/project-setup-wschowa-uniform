@@ -17,10 +17,12 @@ router.post("/", async (req, res) => {
 		const hashPassword = await bcrypt.hash(req.body.password, 10)
 		const user = await User.findOne({ username: req.body.username })
 		if (user) {
+			// If we find a exist username, we need to send an error
 			res
 				.status(401)
 				.json({ success: false, message: "A user of the same username exists" })
 		} else {
+			// If everything is ok, we add a User to our database
 			User.insertMany(
 				[
 					{
