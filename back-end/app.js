@@ -26,7 +26,7 @@ app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 //import editprofile router from routers
-// const homePageRouter = require("./routers/HomePage")
+const homeRouter = require("./routers/Home")
 const profileRouter = require("./routers/Profile")
 const postRouter = require("./routers/DetailedPost")
 const newpostRouter = require("./routers/CreatePost")
@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 app.use("/signup", signupRouter)
 app.use("/login", loginRouter)
 app.use("/profile", profileRouter)
-// app.use("/homepage", homePageRouter)
+app.use("/home", homeRouter)
 // export the express app we created to make it available to other modules
 
 app.use("/seepost", postRouter)
