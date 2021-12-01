@@ -16,7 +16,10 @@ import Logout from "./components/Logout"
 function App() {
 	return (
 		<div>
-			<Header />
+			<div id="header">
+				<Header />
+			</div>
+
 			<Router>
 				<Container fluid="md">
 					<Switch>

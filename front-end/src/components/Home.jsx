@@ -20,7 +20,7 @@ function Home() {
 			{/* <SearchBar/> */}
 			<section>
 				{posts.map((item) => (
-					<HomePagePost key={item.id} details={item} />
+					<HomePagePost key={item._id} details={item} />
 				))}
 			</section>
 		</div>

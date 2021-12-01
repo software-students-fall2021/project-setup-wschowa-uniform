@@ -1,5 +1,5 @@
 import "./Signup.css"
-import { Image, Alert } from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
