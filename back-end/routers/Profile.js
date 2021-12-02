@@ -4,6 +4,10 @@ const router = express.Router()
 const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
 const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
 const User = require('../db')
+const mongoose = require('mongoose')
+const Blog = require('../models/Profile')
+const dbuRI = 'mongodb+srv://PricelessAL:Austinlee5251@freecluster.zspr5.mongodb.net/idek?retryWrites=true&w=majority'
+
 /*
 A middleware that console out the request original url
 */
@@ -74,6 +78,50 @@ router.post("/", logger, (req, res) => {
 	})
 	//We want to alter this information in the database
 	//send back the new profile
+})
+
+//Connects Mongoose with the online database on MongoDB
+mongoose.connect(dbuRI, {useNewUrlParser: true, useUnifiedTopology:true}) //async task
+    .then((result)=> app.listen(3000)) //listens for request only AFTER connect is complete
+    .catch((err)=>console.log(err))
+
+//Used to create a new profile object for the online database
+app.get('/add-profile',(req,res)=>{
+    const profile = new newProfile({
+        first: req.body.first_name,
+		last: req.body.last_name,
+		age: req.body.age,
+		gender: req.body.gender,
+		desc: req.body.description
+    })
+    profile.save() //this saves the profile model to the database ALSO an async task
+        .then((result)=>{
+            res.send(result)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+})
+
+//Used to get all instances of profile changes done
+app.get('/all-profiles', (req,res) =>{
+    Blog.find()
+        .then((result)=>{
+            res.send(result)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+})
+//Used to get a single profile change through the lookup with a specific id
+app.get('/single-profile', (req,res)=>{
+    Blog.findById("61a73ff60070ca90de98da75") //example id
+        .then((result)=>{
+            res.send(result)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
 })
 
 module.exports = router
