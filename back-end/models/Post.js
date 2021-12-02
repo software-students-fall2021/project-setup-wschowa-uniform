@@ -5,8 +5,12 @@ const connection = require("../db")
 // * so users have a username and password
 const user = new mongoose.Schema({
 	username: { type: String, require: true },
-	gender: { type: String, enum: ["male", "female", "prefer not to tell"] },
-	description: { type: String, required: true },
+	gender: {
+		type: String,
+		enum: ["male", "female", "prefer not to tell"],
+		required: false,
+	},
+	description: { type: String, required: false },
 })
 const comment = new mongoose.Schema({
 	content: { type: String, require: true, max: 65 },
