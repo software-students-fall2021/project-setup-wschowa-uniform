@@ -60,7 +60,6 @@ const NewPost = ({ onAdd }) => {
                 'Content-Type': 'application/json'
             }		
 		})
-		.then(res=>res.JSON())
 		.then(alert('you have succesfully created a new post'))
 		console.log(new_post)
 	}
