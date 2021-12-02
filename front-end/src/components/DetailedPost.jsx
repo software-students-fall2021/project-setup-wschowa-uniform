@@ -47,7 +47,8 @@ function DetailedPost(props) {
         const user = localStorage.getItem("username");
         const request = {
             method : 'POST',
-            body : JSON.stringify({"username":user}),
+            body : JSON.stringify({"username":user,
+                                    "post":props.details.name}),
             headers : {
                 'Content-Type': 'application/json'
             }

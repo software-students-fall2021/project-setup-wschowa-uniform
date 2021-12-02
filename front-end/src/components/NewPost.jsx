@@ -2,8 +2,22 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./NewPost.css"
 import axios from "axios"
+import {Space,Select, Input, Cascader} from 'antd' 
+import { SettingOutlined } from '@ant-design/icons';
+
 
 const NewPost = ({ onAdd }) => {
+
+		const { Option } = Select;
+
+		const selectBefore = (
+		<Select defaultValue="http://" className="select-before">
+			<Option value="http://">http://</Option>
+			<Option value="https://">https://</Option>
+		</Select>
+		);
+
+
 	const history = useHistory()
 	// This part is for authentication, please don't alter
 	// Unauthenticated User cannot enter the new post page
@@ -34,14 +48,29 @@ const NewPost = ({ onAdd }) => {
 	const [playlistName, setPlaylistName] = useState("")
 	const [playlistLink, setPlaylistLink] = useState("")
 	const [playlistCaption, setPlaylistCaption] = useState("")
+	const user = localStorage.getItem("username");
 
-	const addNewPost = (obj) => {
-		//TODO
+	const addNewPost = (name,link,caption) => {
+		const link_trim = link.split('/')[4];
+		const user = localStorage.getItem("username");
+		const new_post = {
+			user : user,
+			playlistName: name,
+			playlistLink: link_trim,
+			playlistCaption: caption
+		}
+		fetch('/newpost',{
+			method : 'POST',
+			body : JSON.stringify(new_post),
+			headers : {
+                'Content-Type': 'application/json'
+            }		
+		})
+		.then(res=>res.JSON())
+		.then(alert('you have succesfully created a new post'))
+		console.log(new_post)
 	}
 
-	const onClick = (event) => {
-		console.log(event)
-	}
 
 	const onSubmit = (e) => {
 		e.preventDefault()
@@ -55,11 +84,11 @@ const NewPost = ({ onAdd }) => {
 			return
 		}
 
-		addNewPost({
+		addNewPost(
 			playlistName,
 			playlistLink,
 			playlistCaption,
-		})
+		)
 
 		setPlaylistName("")
 		setPlaylistLink("")
@@ -69,9 +98,9 @@ const NewPost = ({ onAdd }) => {
 	return (
 		<div className="parent">
 			<h1>Spotify Music Sharing</h1>
-			<form action="/upload" method="POST" encType="multipart/form-data">
-				<div className="newPost" onSubmit={onSubmit}>
-					<div>You have logged in as: User Name</div>
+			<form onSubmit={onSubmit}>
+				<div className="newPost" >
+					<div>You have logged in as: {user}</div>
 					<div>
 						Playlist Name:
 						<input
@@ -86,7 +115,7 @@ const NewPost = ({ onAdd }) => {
 						/>
 					</div>
 					<div>
-						Playlist Link:
+						{/* Playlist Link:
 						<input
 							name="playlistLink"
 							className="linkInput"
@@ -97,6 +126,11 @@ const NewPost = ({ onAdd }) => {
 								setPlaylistLink(e.target.value)
 							}}
 						/>
+						 */}
+
+						<Space direction="vertical">
+							<Input addonBefore="http://" addonAfter=".com" defaultValue="spotify album link here" />
+						</Space>
 					</div>
 					<div>
 						Caption:

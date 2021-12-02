@@ -5,7 +5,9 @@ const Comment = require('../models/Comment')
 
 router.post('/user',async(req,res)=>{
     const user = req.body.username
-    const comments = await Comment.find({"user":user});
+    const post = req.body.post
+    const comments = await Comment.find({"user":user,
+                                        "post":post});
     res.status(200).json(comments)
 })
 

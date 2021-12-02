@@ -23,7 +23,6 @@ const post = new mongoose.Schema(
 		playlist_name: { type: String, required: true },
 		playlist_link: { type: String, require: true },
 		caption: { type: String, required: true },
-		comments: [comment],
 	},
 	{ timestamps: true }
 )
