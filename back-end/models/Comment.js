@@ -10,9 +10,9 @@ const user = new mongoose.Schema({
 
 const comment = new mongoose.Schema({
 	content: { type: String, require: true, max: 65 },
-	user: { type: user, require: true },
-	isReply: Boolean,
-	replyTo: [comment], //Error: Cannot access 'Comment' before initialization
+	user: { type: String, require: true },
+	post : {type: String, required: true}
+	// replyTo: [comment], //Error: Cannot access 'Comment' before initialization
 })
 
 const Comment = connection.model("Comment", comment)

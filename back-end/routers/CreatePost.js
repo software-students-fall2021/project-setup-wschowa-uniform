@@ -4,6 +4,7 @@ const router = express.Router()
 const multer = require('multer')
 const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
 const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
+const Post = require('../models/Post')
 require('../db')
 
 router.get("/", (req, res, next) => {
@@ -28,7 +29,7 @@ router.post('/',(req,res)=>{
         playlistName : playlistName,
         playlistLink : playlistLink,
         playlistCaption : playlistCaption
-    }
+    }    
     const new_post = new Post(newPost)
     new_post.save((err,post)=>{
         if(err){
