@@ -3,14 +3,70 @@ import Comments from "./Comments"
 import {Card, Avatar, Comment, Button, Form, Input} from 'antd';
 import {HeartOutlined, CommentOutlined, SendOutlined} from '@ant-design/icons';
 import "./DetailedPost.css"
+import { json } from 'body-parser';
+
 
 function DetailedPost(props) {
 
-    const onFinish = (values) => {
-        console.log("the comment is:", values);
-        const {newComment} = values;
+    const [comment, setComment] = useState('')
+    const [comments, setComments] = useState([])
+
+    let data;
+
+    const onSubmit = async() => {
+
+        console.log(comment)
+
+        const new_comment = {
+            content : comment,
+            user : localStorage.getItem("username"),
+            post : props.details.name
+        }
+        const request = {
+            method : 'POST',
+            body: JSON.stringify(new_comment),
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try{
+             fetch('/comment',request)
+                .then(res=>res.json())
+                .then(alert(`you have succesfully made a comment in the name of ${localStorage.getItem("username")}`))
+        }
+        catch(e){
+            console.error(e.message)
+        }
+
+        // const {newComment} = values;
         // temporary there is no database to record the new comment
     }
+
+    const fetchComment = async() =>{
+        const user = localStorage.getItem("username");
+        const request = {
+            method : 'POST',
+            body : JSON.stringify({"username":user,
+                                    "post":props.details.name}),
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const res = await fetch('/comment/user',request)
+        const comments = await res.json()
+        return comments;
+    }
+
+    useEffect(()=>{
+        const getComments = async() =>{
+            const commentsLIST = await fetchComment();
+            setComments(commentsLIST)
+            console.log(comments)
+        }
+        getComments()
+    }, [comments])
 
     return (
         <div className="detailed-post-page">
@@ -48,19 +104,20 @@ function DetailedPost(props) {
                 <Card.Grid className="detailed-post-comments" hoverable={false}>
                     <Comment
                         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo"/>}
-                        content={<Form className="detailed-post-leave-comment" onFinish={onFinish}>
-                            <Form.Item name="new-comment">
+                        content={<Form className="detailed-post-leave-comment" >
+                            <Form.Item name="new-comment" >
                                 <Input
                                     placeholder="Leave your comment..."
+                                    onChange = {(e)=>setComment(e.target.value)}
                                 />
-                            </Form.Item>
-                            <Form.Item>
-                                <Button type="primary" htmlType="submit">Submit</Button>
+                                <Button type="primary" htmlType="submit" onClick={onSubmit}>Submit</Button>
                             </Form.Item>
                         </Form>}
                     />
-                    <Comments />
-                    <Comments />
+                    <div>{comments.map((each_comment)=>(
+                                 <Comments comment = {each_comment}  />
+
+                    ))}</div>
                 </Card.Grid>
             </Card>
         </div>

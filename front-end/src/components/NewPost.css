@@ -13,7 +13,10 @@
 }
 
 .captionInput {
-	height: 90px;
+	height: 130px;
+	display: inline;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 h1 {
