@@ -46,11 +46,12 @@ const NewPost = ({ onAdd }) => {
 
 	const addNewPost = (name,link,caption) => {
 		const link_trim = link.split('/')[4];
+		const link_final = link_trim.split('?')[0];
 		const user = localStorage.getItem("username");
 		const new_post = {
 			user : user,
 			playlistName: name,
-			playlistLink: link_trim,
+			playlistLink: link_final,
 			playlistCaption: caption
 		}
 		fetch('/newpost',{
