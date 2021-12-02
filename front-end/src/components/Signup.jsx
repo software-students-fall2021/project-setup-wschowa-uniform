@@ -1,5 +1,5 @@
 import "./Signup.css"
-import { Image, Alert } from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
@@ -45,7 +45,7 @@ function Signup(props) {
 				})
 				.then(function (response) {
 					console.log(response)
-					history.push("/login")
+					history.go(0)
 				})
 				.catch(function (error) {
 					console.log(error.response)
