@@ -1,0 +1,30 @@
+.login {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 90%;
+	text-align: center;
+	padding: auto;
+}
+.login_logo {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	margin-bottom: 1%;
+	margin-top: 6%;
+}
+.login_content {
+	margin: 3%;
+}
+.login_input {
+	margin: auto;
+	margin-top: 0%;
+	margin-bottom: 3%;
+}
+.login_button {
+	margin: 6%;
+	margin-top: 10%;
+}
+.login_signup {
+	margin: 0%;
+}

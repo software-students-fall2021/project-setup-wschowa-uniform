@@ -1,0 +1,15 @@
+.posts {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.post {
+	flex: 1;
+}
+#previous_post_header {
+	margin-top: 20px;
+}
+
+.hidden {
+	display: none;
+}

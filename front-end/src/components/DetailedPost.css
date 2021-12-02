@@ -1,0 +1,57 @@
+.detailed-post-page {
+    margin : auto;
+    width : 600px;
+    overflow: auto;
+}
+
+.playlist-name {
+    border : #282c34;
+    margin : auto;
+    text-align: center;
+}
+.detailed-post-cover {
+    height: 600px;
+}
+
+.detailed-post-music-list {
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+.detailed-post-album {
+    width : 700px;
+    height : 400px;
+
+}
+
+.detailed-post-response {
+    margin : auto;
+    width : 100%;
+}
+
+.detailed-post-like-icon {
+    font-size: 40px;
+}
+
+.detailed-post-com-icon {
+    font-size: 40px;
+
+}
+
+.detailed-post-send-icon {
+    font-size: 40px;
+}
+
+.detailed-post-com {
+    margin-left: 20px;
+
+}
+
+.detailed-post-send {
+    margin-left: 20px;
+}
+
+.detailed-post-comments {
+    margin : auto;
+    width : 100%;
+}
