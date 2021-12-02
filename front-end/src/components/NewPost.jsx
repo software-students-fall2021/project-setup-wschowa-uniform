@@ -2,20 +2,14 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./NewPost.css"
 import axios from "axios"
-import {Space,Select, Input, Cascader} from 'antd' 
+import {Space,Select, Input, Cascader,Button} from 'antd' 
 import { SettingOutlined } from '@ant-design/icons';
 
 
 const NewPost = ({ onAdd }) => {
 
-		const { Option } = Select;
+	const { TextArea } = Input;
 
-		const selectBefore = (
-		<Select defaultValue="http://" className="select-before">
-			<Option value="http://">http://</Option>
-			<Option value="https://">https://</Option>
-		</Select>
-		);
 
 
 	const history = useHistory()
@@ -115,7 +109,7 @@ const NewPost = ({ onAdd }) => {
 						/>
 					</div>
 					<div>
-						{/* Playlist Link:
+						Playlist Link:
 						<input
 							name="playlistLink"
 							className="linkInput"
@@ -126,12 +120,9 @@ const NewPost = ({ onAdd }) => {
 								setPlaylistLink(e.target.value)
 							}}
 						/>
-						 */}
-
-						<Space direction="vertical">
-							<Input addonBefore="http://" addonAfter=".com" defaultValue="spotify album link here" />
-						</Space>
+						
 					</div>
+
 					<div>
 						Caption:
 						<input
@@ -145,6 +136,7 @@ const NewPost = ({ onAdd }) => {
 							}}
 						/>
 					</div>
+
 					<div id="share">
 						<input type="submit" value="Save Post and Share" />
 					</div>
