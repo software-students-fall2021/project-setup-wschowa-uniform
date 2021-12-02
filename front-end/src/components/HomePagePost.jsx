@@ -5,9 +5,11 @@ function HomePagePost(props) {
 	const data = props.details
 	const uri =
 		"https://open.spotify.com/embed/playlist/" + props.details.playlist_link
-	const seePost = () => {}
+	const seePost = () => {
+		history.push(`/seepost/${data._id}`)
+	}
 	return (
-		<div className="post_container" ononClick="seePost">
+		<div className="post_container" onClick={seePost}>
 			<div className="post_content">
 				{/* <div className="profile_pic_wrapper">
             <img src="" className="profile_pic" ></img>

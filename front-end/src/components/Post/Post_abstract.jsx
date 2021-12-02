@@ -3,6 +3,7 @@ import { Card, ListGroup, ListGroupItem } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 
 function Post_abstract(props) {
+	// console.log(props.details.id)
 	const history = useHistory()
 	const redirect = () => {
 		history.push(`/seepost/${props.details.id}`)

@@ -6,14 +6,16 @@ import { useState, useEffect, React } from "react"
 function Home() {
 	const [posts, setPosts] = useState([])
 	useEffect(() => {
-		async function fetchPosts() {
-			console.log("fetch")
-			//fetch the past posts data
-			const result = await axios("/home")
-			setPosts(result.data)
-			console.log(posts)
-		}
-		fetchPosts()
+		axios
+			.get("/home")
+			.then((res) => {
+				console.log("fetch")
+				setPosts(res.data)
+				console.log(res.data)
+			})
+			.catch((e) => {
+				console.log(e)
+			})
 	}, [])
 	return (
 		<div>

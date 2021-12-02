@@ -45,7 +45,7 @@ function Signup(props) {
 				})
 				.then(function (response) {
 					console.log(response)
-					history.push("/login")
+					history.go(0)
 				})
 				.catch(function (error) {
 					console.log(error.response)
