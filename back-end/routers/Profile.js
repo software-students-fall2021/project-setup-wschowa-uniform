@@ -17,8 +17,8 @@ req: the request should be a url with the form of "/profile/posts?id={user id}"
 res: the response contains a json array of a user with {user id}'s past posts
 */
 router.get("/posts", async (req, res) => {
-	const username = req.body.username
-	// console.log(username)
+	const username = req.query.username
+	console.log(username)
 	await Post.find({ "user.username": username })
 		.then((doc) => {
 			// console.log(doc)
@@ -35,7 +35,8 @@ req: the request should be a url with the form of "/profile?id={user id}"
 res: the response contains a json object of a user with {user id}
 */
 router.get("/", async (req, res) => {
-	const username = req.body.username
+	const username = req.query.username
+	console.log(username)
 	await User.findOne({ username: username })
 		.then((doc) => {
 			res.status(200).send(doc)
