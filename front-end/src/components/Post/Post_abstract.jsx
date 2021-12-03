@@ -6,17 +6,13 @@ function Post_abstract(props) {
 	// console.log(props.details.id)
 	const history = useHistory()
 	const redirect = () => {
-		history.push(`/seepost/${props.details.id}`)
+		history.push(`/seepost/${props.details._id}`)
 	}
 	return (
 		<Card style={{ width: "30rem" }} onClick={redirect}>
 			<Card.Body>
-				<Card.Title>{props.details.name}</Card.Title>
-				<Card.Text>{props.details.description}</Card.Text>
-				<ListGroup className="list-group-flush">
-					<ListGroupItem>{props.details.music1}</ListGroupItem>
-					<ListGroupItem>{props.details.music2}</ListGroupItem>
-				</ListGroup>
+				<Card.Title>{props.details.playlist_name}</Card.Title>
+				<Card.Text>{props.details.caption}</Card.Text>
 			</Card.Body>
 		</Card>
 	)

@@ -2,7 +2,7 @@
 	margin: 50px auto auto auto;
 }
 .newPost {
-	width: 90%;
+	width: 100%;
 	text-align: center;
 	padding: 20px;
 	margin: 30px;
@@ -13,6 +13,7 @@
 }
 
 .captionInput {
+	width: 50%;
 	height: 130px;
 	display: inline;
 	padding-left: 200px;
@@ -32,5 +33,6 @@ h1 {
 
 #share {
 	position: absolute;
-	margin: 10px auto auto 314px;
+	margin: auto;
+	margin-left: 30%;
 }
