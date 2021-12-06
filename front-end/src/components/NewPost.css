@@ -6,7 +6,7 @@
 	line-height: 80px;
 }
 
-.greeting{
+.greeting {
 	padding-top: 20px;
 	text-align: justify;
 	padding-left: 20px;
@@ -16,18 +16,17 @@
 	height: 50px;
 }
 
-.linkInput{
+.linkInput {
 	height: 50px;
 }
 
-.captionInput{
+.captionInput {
 	width: 300px;
 }
 
-.share{
+.share {
 	padding-left: 40px;
 }
-
 
 /* .parent {
 	margin: 50px auto auto auto;
@@ -53,6 +52,4 @@ h1 {
 	text-align: center;
 	position: relative;
 	border: 1px;
-}
-
-
+}*/

@@ -51,7 +51,9 @@ req: the request should be a url with the form of "/profile?id={user id}"
 */
 router.post("/", async (req, res) => {
 	const username = req.body.username
-	// console.log(req.body.description)
+	console.log(req.body.description)
+	console.log(req.body.gender)
+
 	await User.findOneAndUpdate(
 		{ username: username },
 		{ gender: req.body.gender, description: req.body.description }
