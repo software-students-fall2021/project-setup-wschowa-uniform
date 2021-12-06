@@ -24,7 +24,8 @@ function SeePost(props) {
         const new_comment = {
             content : comment,
             user : localStorage.getItem("username"),
-            post : name
+            post : name,
+            like : 0
         }
         const request = {
             method : 'POST',
@@ -52,7 +53,8 @@ function SeePost(props) {
         const request = {
             method : 'POST',
             body : JSON.stringify({"username":user,
-                                    "post":name}),
+                                    "post":name
+                                }),
             headers : {
                 'Content-Type': 'application/json'
             }
@@ -104,7 +106,8 @@ function SeePost(props) {
 
 	return (
 		<div className="container">
-			<div className="owner-info">
+            <Card>
+            <div className="owner-info">
 				<h2 className="title"><RightSquareOutlined />Title: {name}</h2>
 				<h3 className="owner"><UserOutlined />Creater: {ownername}</h3>
 			</div>
@@ -116,10 +119,11 @@ function SeePost(props) {
 					frameBorder="0"
 					allow="encrypted-media;"
 				></iframe>
-			</div>
+			</div>        
+            </Card>
 
 			<Card.Grid className="detailed-post-comments" hoverable={false}>
-                    <Comment
+                    <Comment className="new_comment"
                         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo"/>}
                         content={<Form className="detailed-post-leave-comment" >
                             <Form.Item name="new-comment" >
@@ -131,7 +135,7 @@ function SeePost(props) {
                             </Form.Item>
                         </Form>}
                     />
-                    <div>{comments.map((each_comment)=>(
+                    <div className="old_comment">{comments.map((each_comment)=>(
                                  <Comments comment = {each_comment}  />
 
                     ))}</div>
