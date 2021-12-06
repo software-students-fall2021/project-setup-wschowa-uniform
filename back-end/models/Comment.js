@@ -1,3 +1,4 @@
+const { stubTrue } = require("lodash")
 const mongoose = require("mongoose")
 const connection = require("../db")
 const user = new mongoose.Schema({
@@ -11,7 +12,8 @@ const user = new mongoose.Schema({
 const comment = new mongoose.Schema({
 	content: { type: String, require: true, max: 65 },
 	user: { type: String, require: true },
-	post : {type: String, required: true}
+	post : {type: String, required: true},
+	like :{type: Number, required: true}
 	// replyTo: [comment], //Error: Cannot access 'Comment' before initialization
 })
 

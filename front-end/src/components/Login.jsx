@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import "./Login.css"
-import logo from "../image/Logo.jpg"
+import logo from "../image/logo.png"
 function Login() {
 	let history = useHistory()
 	// create state variables to hold username and password
