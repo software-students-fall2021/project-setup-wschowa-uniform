@@ -16,7 +16,7 @@ router.post('/',async (req,res)=>{
         {
             content : req.body.content,
             user : req.body.user,
-            post : req.body.post
+            post : req.body.post,
         }
     )
     const saved = await new_comment.save();
