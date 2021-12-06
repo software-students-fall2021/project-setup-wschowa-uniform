@@ -12,7 +12,6 @@ function SeePost(props) {
 	const [ownername, setOwnername] = useState("")
 	const [uri, setUri] = useState("")
 	const [name, setName] = useState("")
-	const [content, setContent] = useState("")
 	const [comment, setComment] = useState('')
     const [comments, setComments] = useState([])
 

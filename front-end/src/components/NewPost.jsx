@@ -91,10 +91,11 @@ const NewPost = ({ onAdd }) => {
 
 	return (
 		<div className="parent">
-			<h1>Spotify Music Sharing</h1>
+			{/* <h1>Spotify Music Sharing</h1> */}
 			<form onSubmit={onSubmit}>
+			<div className="greeting"><div>You have logged in as: {user}</div>
+				<div>Time to share a new post!</div></div>
 				<div className="newPost" >
-					<div>You have logged in as: {user}</div>
 					<div>
 						Playlist Name:
 						<input
@@ -136,10 +137,9 @@ const NewPost = ({ onAdd }) => {
 							}}
 						/>
 					</div>
-
-					<div id="share">
+				</div>
+				<div className="share">
 						<input type="submit" value="Save Post and Share" />
-					</div>
 				</div>
 			</form>
 		</div>
