@@ -43,11 +43,11 @@ const Profile = () => {
 	const [file, selectedFile] = React.useState(null)
 	const [data, setData] = useState([])
 	const userId = 1 //this should be get from database, now just hard coded
-	const [name, setName] = React.useState("First Name Here")
+	const [name, setName] = React.useState("")
 	// const [lastname, setLastName] = React.useState("Last Name Here")
-	const [age, setAge] = React.useState("Age Here")
-	const [gender, setGender] = React.useState("Gender Here")
-	const [desc, setDesc] = React.useState("Description Here")
+	const [age, setAge] = React.useState("")
+	const [gender, setGender] = React.useState("")
+	const [desc, setDesc] = React.useState("")
 
 	const fileSelectedHandler = (event) => {
 		selectedFile(event.target.files[0])
@@ -67,7 +67,11 @@ const Profile = () => {
 	}
 	const postData = async () => {
 		if (edit) {
-			if (gender === ("male" || "female")) {
+			console.log("post")
+			console.log(gender)
+			console.log(desc)
+			if (gender === "male" || gender === "female") {
+				console.log("percede")
 				axios
 					.post("/profile", {
 						username: username,
