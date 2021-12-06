@@ -33,11 +33,6 @@ function Comments({comment}) {
                     {comment.content}
                 </p>
             }
-            datetime={
-                <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().fromNow()}</span>
-                </Tooltip>
-            }
         />
 
     );
