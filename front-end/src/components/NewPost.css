@@ -37,6 +37,7 @@
 
 
 .captionInput {
+	width: 50%;
 	height: 130px;
 	display: inline;
 	padding-left: 200px;
@@ -54,6 +55,4 @@ h1 {
 	border: 1px;
 }
 
-.share {
-	size: 4%;
-} */
+

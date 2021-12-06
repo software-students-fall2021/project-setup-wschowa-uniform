@@ -37,11 +37,17 @@ const Profile = () => {
 			})
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 	//authentication part ends
-
+	const username = localStorage.getItem("username")
 	const [edit, showEdit] = React.useState(false)
 	const [butname, editButName] = React.useState("Edit Profile")
 	const [file, selectedFile] = React.useState(null)
 	const [data, setData] = useState([])
+	const userId = 1 //this should be get from database, now just hard coded
+	const [name, setName] = React.useState("First Name Here")
+	// const [lastname, setLastName] = React.useState("Last Name Here")
+	const [age, setAge] = React.useState("Age Here")
+	const [gender, setGender] = React.useState("Gender Here")
+	const [desc, setDesc] = React.useState("Description Here")
 
 	const fileSelectedHandler = (event) => {
 		selectedFile(event.target.files[0])
@@ -59,50 +65,62 @@ const Profile = () => {
 			editButName("Edit Profile")
 		}
 	}
+	const postData = async () => {
+		if (edit) {
+			if (gender === ("male" || "female")) {
+				axios
+					.post("/profile", {
+						username: username,
+						gender: gender,
+						description: desc,
+					})
+					.then(function (response) {
+						console.log(response)
+					})
+					.catch(function (error) {
+						console.log(error)
+					})
+			}
+		}
+	}
 
 	const overall = () => {
+		postData()
 		toggleEdit()
 		buttonName()
 	}
 
-	const userId = 1 //this should be get from database, now just hard coded
-	const [firstname, setFirstName] = React.useState("First Name Here")
-	const [lastname, setLastName] = React.useState("Last Name Here")
-	const [age, setAge] = React.useState("Age Here")
-	const [gender, setGender] = React.useState("Gender Here")
-	const [desc, setDesc] = React.useState("Description Here")
 	//fetch the data from backend
 	useEffect(() => {
-		async function fetchData() {
-			//fetch the past posts data
-			const result = await axios("/profile/posts?id=" + userId)
-			setData(result.data)
-			//fectch the user information data
-			const userInfo = await axios("/profile?id=" + userId)
-			setFirstName(userInfo.data.first_name)
-			setAge(userInfo.data.age)
-			setLastName(userInfo.data.last_name)
-			setGender(userInfo.data.gender)
-			setDesc(userInfo.data.description)
-		}
-		async function postData() {
-			axios
-				.post("/profile", {
-					first_name: data.first_name,
-					age: data.age,
-					gender: data.gender,
-					last_name: data.last_name,
-					description: data.description,
-				})
-				.then(function (response) {
-					console.log(response)
-				})
-				.catch(function (error) {
-					console.log(error)
-				})
-		}
-		fetchData()
-		postData()
+		console.log(username)
+		axios
+			.get("/profile/posts", {
+				params: {
+					username: username,
+				},
+			})
+			.then((res) => {
+				console.log(res.data)
+				setData(res.data)
+			})
+			.catch((e) => {
+				console.log(e.response)
+			})
+		axios
+			.get("/profile", {
+				params: {
+					username: username,
+				},
+			})
+			.then((res) => {
+				console.log(res.data)
+				setName(res.data.username)
+				setGender(res.data.gender)
+				setDesc(res.data.description)
+			})
+			.catch((e) => {
+				console.log(e.response)
+			})
 	}, [])
 	const logout = () => {
 		localStorage.removeItem("token")
@@ -112,48 +130,25 @@ const Profile = () => {
 		<section>
 			<div className="Profile">
 				<h1>Profile</h1>
-				<div>
+				{/* <div>
 					<img src="https://picsum.photos/200" />
-				</div>
-				<p>
-					Name: {firstname} {lastname}
-				</p>
-				<p>Age: {age}</p>
+				</div> */}
+				<p>Name: {username}</p>
 				<p>Gender: {gender}</p>
 				<p>{desc}</p>
 			</div>
 			<button onClick={overall}>{butname}</button>
 			<p className={edit ? "" : "hidden"}>
-				<form className="first_name">
+				{/* <form className="first_name">
 					<label>
-						Enter your first name:
+						Enter your name:
 						<input
 							type="text"
-							value={firstname}
-							onChange={(e) => setFirstName(e.target.value)}
+							value={name}
+							onChange={(e) => setName(e.target.value)}
 						/>
 					</label>
-				</form>
-				<form className="last_name">
-					<label>
-						Enter your last name:
-						<input
-							type="text"
-							value={lastname}
-							onChange={(e) => setLastName(e.target.value)}
-						/>
-					</label>
-				</form>
-				<form className="age">
-					<label>
-						Enter your age:
-						<input
-							type="text"
-							value={age}
-							onChange={(e) => setAge(e.target.value)}
-						/>
-					</label>
-				</form>
+				</form> */}
 				<form className="gender">
 					<label>
 						Enter your gender:
@@ -179,7 +174,7 @@ const Profile = () => {
 			<h2 id="previous_post_header">Previous Posts</h2>
 			<section className="posts">
 				{data.map((item) => (
-					<Post_abstract className="post" key={item.id} details={item} />
+					<Post_abstract className="post" key={item._id} details={item} />
 				))}
 			</section>
 		</section>
