@@ -1,9 +1,8 @@
 const { default: axios } = require("axios")
 const express = require("express")
 const router = express.Router()
-const DATA_URL = "https://my.api.mockaroo.com/user.json?key=99391580"
-const POST_URL = "https://my.api.mockaroo.com/post.json?key=99391580"
-const User = require('../db')
+const Post = require("../models/Post")
+const User = require("../models/User")
 /*
 A middleware that console out the request original url
 */
@@ -17,18 +16,17 @@ The get method of the post/posts page
 req: the request should be a url with the form of "/profile/posts?id={user id}"
 res: the response contains a json array of a user with {user id}'s past posts
 */
-router.get("/posts", logger, (req, res, next) => {
-	// get the user id from the req url
-	const user_id = req.query.id
-	console.log(user_id)
-	// console.log(`The id is ${req.id}`)
-	// get data from database
-	axios
-		.get(POST_URL)
-		.then((apiresponse) => {
-			res.status(200).send(apiresponse.data)
+router.get("/posts", async (req, res) => {
+	const username = req.query.username
+	console.log(username)
+	await Post.find({ "user.username": username })
+		.then((doc) => {
+			// console.log(doc)
+			res.status(200).send(doc)
 		})
-		.catch((err) => next(err))
+		.catch((e) => {
+			res.status(401).send("fail")
+		})
 })
 
 /*
@@ -36,44 +34,35 @@ The get method of the profile page
 req: the request should be a url with the form of "/profile?id={user id}"
 res: the response contains a json object of a user with {user id}
 */
-router.get("/", logger, (req, res, next) => {
-	// get the user id from the req url
-	const user_id = req.query.id
-	console.log(user_id)
-	console.log(`The id is ${req.id}`)
-	// get data from database
-	axios
-		.get(DATA_URL)
-		.then((apiresponse) => {
-			const databyid = apiresponse.data.find((element) => element.id == user_id)
-			res.status(200).send(databyid)
+router.get("/", async (req, res) => {
+	const username = req.query.username
+	console.log(username)
+	await User.findOne({ username: username })
+		.then((doc) => {
+			res.status(200).send(doc)
 		})
-		.catch((err) => next(err))
+		.catch((e) => {
+			res.status(401).send("fail")
+		})
 })
 /*
 Post method the change user profile with the {user id}
 req: the request should be a url with the form of "/profile?id={user id}"
 */
-router.post("/", logger, (req, res) => {
-	const user_id = req.query.id
-	console.log(req.body)
-	const newProfile = {
-		id: req.query.id,
-		first_name: req.body.first_name,
-		age: req.body.age,
-		gender: req.body.gender,
-		last_name: req.body.last_name,
-		description: req.body.description,
-	}
-	const new_user = new User(newProfile)
-	new_user.save((err,user)=>{
-		if(err) console.error(`there has been error saving profile: ${err}`)
-		else{
-			res.status(200).send(user)
-		}
-	})
-	//We want to alter this information in the database
-	//send back the new profile
+router.post("/", async (req, res) => {
+	const username = req.body.username
+	// console.log(req.body.description)
+	await User.findOneAndUpdate(
+		{ username: username },
+		{ gender: req.body.gender, description: req.body.description }
+	)
+		.then((doc) => {
+			// console.log(doc)
+			res.status(200).send(doc)
+		})
+		.catch((e) => {
+			res.status(401).send("fail")
+		})
 })
 
 module.exports = router
