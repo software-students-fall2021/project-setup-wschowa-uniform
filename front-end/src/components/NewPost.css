@@ -1,16 +1,40 @@
-.parent {
-	margin: 50px auto auto auto;
-}
 .newPost {
-	width: 100%;
-	text-align: center;
+	width: 90%;
+	text-align: justify;
 	padding: 20px;
-	margin: 30px;
+	/* margin: 50px; */
 	line-height: 80px;
 }
-.nameInput {
-	height: 60px;
+
+.greeting{
+	padding-top: 20px;
+	text-align: justify;
+	padding-left: 20px;
 }
+
+.nameInput {
+	height: 50px;
+}
+
+.linkInput{
+	height: 50px;
+}
+
+.captionInput{
+	width: 300px;
+}
+
+.share{
+	padding-left: 40px;
+}
+
+
+/* .parent {
+	margin: 50px auto auto auto;
+}
+
+
+
 
 .captionInput {
 	width: 50%;
@@ -31,8 +55,4 @@ h1 {
 	border: 1px;
 }
 
-#share {
-	position: absolute;
-	margin: auto;
-	margin-left: 30%;
-}
+

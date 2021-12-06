@@ -11,7 +11,7 @@
 	font-size: 30px;
 }
 .title {
-	font-size: 35px;
+	font-size: 30px;
 }
 #playlist_embed {
 	height: 30%;
@@ -29,4 +29,8 @@
 }
 .button {
 	margin-left: 0%;
+}
+
+.detailed-post-comments{
+	width: auto;
 }

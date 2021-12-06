@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import Comments from "./Comments"
 import {Card, Avatar, Comment, Form, Input} from 'antd';
+import{UserOutlined,RightSquareOutlined} from '@ant-design/icons'
 import "./SeePost.css"
 
 function SeePost(props) {
@@ -12,7 +13,6 @@ function SeePost(props) {
 	const [ownername, setOwnername] = useState("")
 	const [uri, setUri] = useState("")
 	const [name, setName] = useState("")
-	const [content, setContent] = useState("")
 	const [comment, setComment] = useState('')
     const [comments, setComments] = useState([])
 
@@ -105,8 +105,8 @@ function SeePost(props) {
 	return (
 		<div className="container">
 			<div className="owner-info">
-				<h2 className="title">Title: {name}</h2>
-				<h3 className="owner">Creater: {ownername}</h3>
+				<h2 className="title"><RightSquareOutlined />Title: {name}</h2>
+				<h3 className="owner"><UserOutlined />Creater: {ownername}</h3>
 			</div>
 			<div id="playlist_embed" title="spotify">
 				<iframe

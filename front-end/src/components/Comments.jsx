@@ -24,7 +24,7 @@ function Comments({comment}) {
 
     return (
 
-        <Comment
+        <Comment 
             actions={actions}
             author={<a>{comment.user}</a>}
             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
@@ -32,11 +32,6 @@ function Comments({comment}) {
                 <p>
                     {comment.content}
                 </p>
-            }
-            datetime={
-                <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().fromNow()}</span>
-                </Tooltip>
             }
         />
 

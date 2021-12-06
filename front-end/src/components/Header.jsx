@@ -1,7 +1,9 @@
 import React from "react"
 import { MenuFoldOutlined } from "@ant-design/icons"
+import siSpotify from "simple-icons/icons"
 import { Menu, Dropdown, Button } from "antd"
 import "./Header.css"
+import spotify from '../image/spotify.png'
 
 function Header() {
 	const menu = (
@@ -36,7 +38,7 @@ function Header() {
 					icon={<MenuFoldOutlined className="menu-icon" />}
 				></Button>
 			</Dropdown>
-			<span className="App-title">Spotify Music Sharing</span>
+			<span className="App-title"><img src={spotify} alt='spotify' className="spotifyLogo" />Music Sharing </span>
 		</header>
 	)
 }
