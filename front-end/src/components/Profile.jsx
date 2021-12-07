@@ -5,7 +5,7 @@ import {
 	Route,
 	useHistory,
 } from "react-router-dom"
-import {Card} from "antd"
+import { Card } from "antd"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import Post_abstract from "./Post/Post_abstract"
@@ -106,7 +106,7 @@ const Profile = () => {
 			})
 			.then((res) => {
 				console.log(res.data)
-				setData(res.data)
+				setData(res.data.reverse())
 			})
 			.catch((e) => {
 				console.log(e.response)
@@ -135,13 +135,13 @@ const Profile = () => {
 		<section>
 			<div className="Profile">
 				<Card>
-				<h1>Profile</h1>
-				{/* <div>
+					<h1>Profile</h1>
+					{/* <div>
 					<img src="https://picsum.photos/200" />
 				</div> */}
-				<p>Name: {username}</p>
-				<p>Gender: {gender}</p>
-				<p>{desc}</p>
+					<p>Name: {username}</p>
+					<p>Gender: {gender}</p>
+					<p>{desc}</p>
 				</Card>
 			</div>
 			<button onClick={overall}>{butname}</button>

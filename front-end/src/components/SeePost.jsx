@@ -27,7 +27,8 @@ function SeePost(props) {
 					"https://open.spotify.com/embed/playlist/" + res.data.playlist_link
 				)
 				setUser(res.data.user)
-				setComments(res.data.comments)
+				const commentTemp = res.data.comments.reverse()
+				setComments(commentTemp)
 				setName(res.data.playlist_name)
 				setOwnername(res.data.user.username)
 			})
