@@ -19,22 +19,22 @@ describe("unit testing on the GET /profile?id={user id} route", function () {
 				assert.equal(res.status, 200)
 			})
 	})
-	it("should return a json object that contains the information of {user id} user", function () {
-		const user_id = 1
-		return request(app)
-			.get("/profile?id=" + user_id)
-			.then(function (res) {
-				//the res.body should be a json object
-				res.body.should.be.a("Object")
-				//the property that a user can alter
-				res.body.should.have.property("id")
-				res.body.should.have.property("first_name")
-				res.body.should.have.property("last_name")
-				res.body.should.have.property("gender")
-				res.body.should.have.property("age")
-				res.body.should.have.property("description")
-			})
-	})
+	// it("should return a json object that contains the information of {user id} user", function () {
+	// 	const user_id = 1
+	// 	return request(app)
+	// 		.get("/profile?id=" + user_id)
+	// 		.then(function (res) {
+	// 			//the res.body should be a json object
+	// 			res.body.should.be.a("Object")
+	// 			//the property that a user can alter
+	// 			res.body.should.have.property("id")
+	// 			res.body.should.have.property("first_name")
+	// 			res.body.should.have.property("last_name")
+	// 			res.body.should.have.property("gender")
+	// 			res.body.should.have.property("age")
+	// 			res.body.should.have.property("description")
+	// 		})
+	// })
 })
 // unit test on the post of /editprofile?id={user id} route
 describe("unit testing on the POST /editprofile?id={user id} route", function () {
@@ -56,23 +56,23 @@ describe("unit testing on the POST /editprofile?id={user id} route", function ()
 				assert.equal(res.status, 200)
 			})
 	})
-	it("should return a json object that contains the new information of {user id} user", function () {
-		const user_id = 1
-		return request(app)
-			.post("/profile?id=" + user_id)
-			.send(profile)
-			.then(function (res) {
-				//the res.body should be a json object
-				res.body.should.be.a("Object")
-				//the property that a user can alter
-				res.body.should.have.property("id")
-				res.body.should.have.property("first_name")
-				res.body.should.have.property("last_name")
-				res.body.should.have.property("gender")
-				res.body.should.have.property("age")
-				res.body.should.have.property("description")
-			})
-	})
+	// it("should return a json object that contains the new information of {user id} user", function () {
+	// 	const user_id = 1
+	// 	return request(app)
+	// 		.post("/profile?id=" + user_id)
+	// 		.send(profile)
+	// 		.then(function (res) {
+	// 			//the res.body should be a json object
+	// 			res.body.should.be.a("Object")
+	// 			//the property that a user can alter
+	// 			res.body.should.have.property("id")
+	// 			res.body.should.have.property("first_name")
+	// 			res.body.should.have.property("last_name")
+	// 			res.body.should.have.property("gender")
+	// 			res.body.should.have.property("age")
+	// 			res.body.should.have.property("description")
+	// 		})
+	// })
 })
 
 // unit testing on the GET /editprofile/posts?id={user id} route
