@@ -3,13 +3,6 @@ const express = require("express")
 const router = express.Router()
 const Post = require("../models/Post")
 const User = require("../models/User")
-/*
-A middleware that console out the request original url
-*/
-function logger(req, res, next) {
-	console.log(req.originalUrl)
-	next()
-}
 
 /*
 The get method of the post/posts page
@@ -18,7 +11,7 @@ res: the response contains a json array of a user with {user id}'s past posts
 */
 router.get("/posts", async (req, res) => {
 	const username = req.query.username
-	console.log(username)
+	// console.log(username)
 	await Post.find({ "user.username": username })
 		.then((doc) => {
 			// console.log(doc)
@@ -36,7 +29,7 @@ res: the response contains a json object of a user with {user id}
 */
 router.get("/", async (req, res) => {
 	const username = req.query.username
-	console.log(username)
+	// console.log(username)
 	await User.findOne({ username: username })
 		.then((doc) => {
 			res.status(200).send(doc)
@@ -56,7 +49,8 @@ router.post("/", async (req, res) => {
 
 	await User.findOneAndUpdate(
 		{ username: username },
-		{ gender: req.body.gender, description: req.body.description }
+		{ gender: req.body.gender, description: req.body.description },
+		{ new: true }
 	)
 		.then((doc) => {
 			// console.log(doc)
