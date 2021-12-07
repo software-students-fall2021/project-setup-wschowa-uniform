@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar"
 import HomePagePost from "./HomePagePost"
 import axios from "axios"
 import { useState, useEffect, React } from "react"
-import {BackTop} from 'antd'
+import { BackTop } from "antd"
 function Home() {
 	const [posts, setPosts] = useState([])
 	useEffect(() => {
@@ -11,8 +11,9 @@ function Home() {
 			.get("/home")
 			.then((res) => {
 				console.log("fetch")
-				setPosts(res.data)
-				console.log(res.data)
+				const data = res.data.reverse()
+				setPosts(data)
+				// console.log(data)
 			})
 			.catch((e) => {
 				console.log(e)
@@ -29,7 +30,6 @@ function Home() {
 				))}
 			</section>
 		</div>
-		
 	)
 }
 export default Home
