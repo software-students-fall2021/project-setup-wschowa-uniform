@@ -3,8 +3,6 @@ import axios from "axios"
 import { Button } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import Comments from "./Comments"
-import {Card, Avatar, Comment, Form, Input} from 'antd';
-import{UserOutlined,RightSquareOutlined} from '@ant-design/icons'
 import "./SeePost.css"
 
 function SeePost(props) {
@@ -12,68 +10,9 @@ function SeePost(props) {
 	const [user, setUser] = useState({})
 	const [ownername, setOwnername] = useState("")
 	const [uri, setUri] = useState("")
+	const [comments, setComments] = useState([])
 	const [name, setName] = useState("")
-	const [comment, setComment] = useState('')
-    const [comments, setComments] = useState([])
-
-
-    const onSubmit = async() => {
-
-        console.log(comment)
-
-        const new_comment = {
-            content : comment,
-            user : localStorage.getItem("username"),
-            post : name,
-            like : 0
-        }
-        const request = {
-            method : 'POST',
-            body: JSON.stringify(new_comment),
-            headers : {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        try{
-             fetch('/comment',request)
-                .then(res=>res.json())
-                .then(alert(`you have succesfully made a comment in the name of ${localStorage.getItem("username")}`))
-        }
-        catch(e){
-            console.error(e.message)
-        }
-
-        // const {newComment} = values;
-        // temporary there is no database to record the new comment
-    }
-
-    const fetchComment = async() =>{
-        const user = localStorage.getItem("username");
-        const request = {
-            method : 'POST',
-            body : JSON.stringify({"username":user,
-                                    "post":name
-                                }),
-            headers : {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        const res = await fetch('/comment/user',request)
-        const comments = await res.json()
-        return comments;
-    }
-
-    useEffect(()=>{
-        const getComments = async() =>{
-            const commentsLIST = await fetchComment();
-            setComments(commentsLIST)
-            console.log(comments)
-        }
-        getComments()
-    }, [comments])
-
+	const [content, setContent] = useState("")
 
 	let history = useHistory()
 	const { parameter1 } = props.match.params
@@ -88,7 +27,7 @@ function SeePost(props) {
 					"https://open.spotify.com/embed/playlist/" + res.data.playlist_link
 				)
 				setUser(res.data.user)
-				// setComments(res.data.comments)
+				setComments(res.data.comments)
 				setName(res.data.playlist_name)
 				setOwnername(res.data.user.username)
 			})
@@ -99,17 +38,35 @@ function SeePost(props) {
 	useEffect(async () => {
 		fetchdata()
 	}, [])
-
 	const handleRoute = () => {
 		history.push("/")
 	}
-
+	const handleSubmit = async () => {
+		axios
+			.post(BASE_URL, {
+				username: username,
+				content: content,
+			})
+			.then(function (res) {
+				// console.log(res)
+				console.log("success")
+				// history.go(0)
+				setContent("")
+				fetchdata()
+			})
+			.catch(function (e) {
+				console.log(e.response)
+			})
+	}
+	// console.log(data)
+	// console.log(user)
+	// console.log(comments)
+	// console.log(username)
 	return (
 		<div className="container">
-            <Card>
-            <div className="owner-info">
-				<h2 className="title"><RightSquareOutlined />Title: {name}</h2>
-				<h3 className="owner"><UserOutlined />Creater: {ownername}</h3>
+			<div className="owner-info">
+				<h2 className="title">Title: {name}</h2>
+				<h3 className="owner">Creater: {ownername}</h3>
 			</div>
 			<div id="playlist_embed" title="spotify">
 				<iframe
@@ -119,27 +76,25 @@ function SeePost(props) {
 					frameBorder="0"
 					allow="encrypted-media;"
 				></iframe>
-			</div>        
-            </Card>
-
-			<Card.Grid className="detailed-post-comments" hoverable={false}>
-                    <Comment className="new_comment"
-                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo"/>}
-                        content={<Form className="detailed-post-leave-comment" >
-                            <Form.Item name="new-comment" >
-                                <Input
-                                    placeholder="Leave your comment..."
-                                    onChange = {(e)=>setComment(e.target.value)}
-                                />
-                                <Button type="primary" htmlType="submit" onClick={onSubmit}>Submit</Button>
-                            </Form.Item>
-                        </Form>}
-                    />
-                    <div className="old_comment">{comments.map((each_comment)=>(
-                                 <Comments comment = {each_comment}  />
-
-                    ))}</div>
-                </Card.Grid>
+			</div>
+			<section className="addComments">
+				<textarea
+					className="input"
+					name="description"
+					onChange={(e) => setContent(e.target.value)}
+					placeholder="Maybe you want to comment here..."
+					rows="4"
+					cols="50"
+				></textarea>
+				<button className="button" onClick={handleSubmit}>
+					Submit
+				</button>
+			</section>
+			<section className="comments">
+				{comments.map((item) => (
+					<Comments key={item._id} details={item} />
+				))}
+			</section>
 		</div>
 	)
 }
