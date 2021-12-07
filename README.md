@@ -1,5 +1,8 @@
 # Spotify Music Sharing
-[Link to Website](http://137.184.48.15:3000/)
+
+## Website
+
+You can see the website clicking this link [Spotify Music Sharing](http://137.184.48.15:3000/)
 
 ## Project Description
 
@@ -33,12 +36,48 @@ For any Spotify users or just people who want to share their feeling on music, S
 
 This project is inspired by our team member Daniel Sun's experience with Spotify.
 
+- 12/7/2021 Complete deployment
 - 10/17/2021 The prototype has been created for the project now.
 - Instructions on how to contribute can be found in the [CONTRIBUTING.md](https://github.com/software-students-fall2021/project-setup-wschowa-uniform/blob/master/CONTRIBUTING.md)
 
 ## Instruction for Building and Testing the Project
 
-To be written.
+### Frontend
+
+#### `cd front-end`
+
+Get into the front-end folder
+
+#### `npm build`
+
+Donload any dependency that the program need.
+
+#### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### Backend
+
+#### Before you start
+
+Ask any member of the team for .env file so that you can access the database.  
+Place the .env file under ./back-end folder
+
+#### `cd back-end`
+
+Get into the back-end folder
+
+#### `npm build`
+
+Donload any dependency that the program need.
+
+#### `nodemon server`
+
+Start the server
 
 ## Relevant Links
 
